@@ -21,7 +21,58 @@
     <Page.Scenes>
         <Scene Title="Start" Created="12/11/2017 11:17:22" Id="7455024c-68eb-4ea8-97ee-7f8dd135accb">
             <Scene.KeyFrames>
-                <KeyFrame Id="c4d1d8ee-1f5f-4297-9f0a-16ef4d4f6f79" />
+                <KeyFrame Id="c4d1d8ee-1f5f-4297-9f0a-16ef4d4f6f79">
+                    <KeyFrame.Operations>
+                        <Add Property="Panel.Children" Target="f249fffa-af9f-40d0-be31-fc05d332a884">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="764a490d-e3a3-4623-97e8-bf619c0a907f" Name="NavBar" Panel.Bounds="24,10,0*,0*">
+                                    <Group.Children>
+                                        <Rectangle Id="46d39c4d-afb4-4e48-95cf-b55c93831560" Panel.Bounds="0,0,984{5,2147483647},110{5,2147483647}" />
+                                        <Rectangle Id="df38d504-264b-4cf9-a4bc-a5ba283f2706" Panel.Bounds="29,13,122{5,2147483647},78{5,2147483647}" />
+                                        <Button Text="Logout" Id="88265933-8446-4548-9167-4e34a0690597" Panel.Bounds="895,61,80{5,2147483647},35{5,2147483647}" />
+                                        <Link Text="Contacts" FontSize="21" FontStyle="Normal|Underline" Id="810f56f4-597d-42f4-a1d4-0e398a740c51" Panel.Bounds="447,61,5*{5,2147483647},5*{5,2147483647}" />
+                                        <Link Text="Articles" FontSize="21" FontStyle="Normal|Underline" Id="e64de9dc-9bd2-427c-ba68-48192fd17fa2" Panel.Bounds="335,61,5*{5,2147483647},5*{5,2147483647}" />
+                                        <Label RichText="&lt;Run FontSize=&quot;24&quot; &gt;Paw Guide&lt;/Run&gt;" Align="Center" Id="1347bfdf-9a9a-4275-9744-526d12cb4f12" Panel.Bounds="34,18,112{5,2147483647},74{5,2147483647}" />
+                                        <Link Text="Add new place" FontSize="21" FontFamily="Open Sans" FontStyle="Normal|Underline" Id="f4679cc0-63ed-456f-9ffc-706f29d97f4f" Panel.Bounds="163,63,5*{5,2147483647},5*{5,2147483647}" />
+                                        <Label RichText="Hi Username, &#xD;&#xA;Admin/Moderator/None" FontFamily="Open Sans" Id="476dce4e-d82f-4f04-befb-2afa8cec5a6d" Panel.Bounds="831,3,150{5,2147483647},18*{5,2147483647}" />
+                                        <Link Text="Admin/Moderator Panel" FontSize="21" FontFamily="Open Sans" FontStyle="Normal|Underline" Id="3f41b708-6fb9-4356-97a5-e70aa3e6d618" Panel.Bounds="641,62,5*{5,2147483647},5*{5,2147483647}" />
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="f249fffa-af9f-40d0-be31-fc05d332a884">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="b8167d78-8f09-46bb-ac39-0514e77e7c7c" Name="Footer" Panel.Bounds="24,658,0*,0*">
+                                    <Group.Children>
+                                        <Rectangle Id="348ee2ae-de0b-4aaa-afc6-c62c87c3459e" Panel.Bounds="0,0,984{5,2147483647},100{5,2147483647}" />
+                                        <Label RichText="Copyright © 2017. Paw Guid" FontFamily="Open Sans" Id="926317b5-ad8a-4c27-99a4-85a78304876e" Panel.Bounds="413,71,145*{5,2147483647},29{5,2147483647}" />
+                                        <Icon CatalogId="fa-facebook-official" Id="7cb90894-ca8d-4de1-82f4-46175844498c" Panel.Bounds="472,7,32{5,2147483647},32{5,2147483647}" />
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="f249fffa-af9f-40d0-be31-fc05d332a884">
+                            <Add.Item>
+                                <Title RichText="For any questions contact us on:" FontFamily="Open Sans" Id="fbfd8ae4-cacd-4e89-9e70-6bc2fdff1ceb" Panel.Bounds="268,169,5*{5,2147483647},5*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="f249fffa-af9f-40d0-be31-fc05d332a884">
+                            <Add.Item>
+                                <Label RichText="email@pawguide.com" FontSize="21" FontFamily="Open Sans" Id="2acbf13b-1089-4b69-950a-0c64d7506814" Panel.Bounds="284,257,5*{5,2147483647},5*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="f249fffa-af9f-40d0-be31-fc05d332a884">
+                            <Add.Item>
+                                <Link Text="facebook page" FontSize="21" FontFamily="Open Sans" FontStyle="Normal|Underline" Id="b5bfc944-2e68-4d57-b0d7-3416325b5e09" Panel.Bounds="284,301,5*{5,2147483647},5*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="f249fffa-af9f-40d0-be31-fc05d332a884">
+                            <Add.Item>
+                                <Label RichText="&lt;Run FontSize=&quot;21&quot; &gt;+359 888 888 888&lt;/Run&gt;" FontFamily="Open Sans" Id="166022ac-cfc7-4fc8-8923-660c04a38c16" Panel.Bounds="284,356,5*{5,2147483647},5*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                    </KeyFrame.Operations>
+                </KeyFrame>
             </Scene.KeyFrames>
         </Scene>
     </Page.Scenes>

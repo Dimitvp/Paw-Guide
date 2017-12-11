@@ -87,6 +87,11 @@
                                 </Group>
                             </Add.Item>
                         </Add>
+                        <Add Property="Panel.Children" Target="b10afe27-c525-436c-8a2b-0280143cafa6">
+                            <Add.Item>
+                                <Label RichText="Follwe us on:" FontFamily="Open Sans" Id="f9300aa3-4103-4d28-9afe-1a070cc2ceb9" Panel.Bounds="411,676,5*{5,2147483647},5*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
                     </KeyFrame.Operations>
                 </KeyFrame>
             </Scene.KeyFrames>
