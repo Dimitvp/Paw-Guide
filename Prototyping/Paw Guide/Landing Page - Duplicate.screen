@@ -1,6 +1,7 @@
 ﻿<?Infragistics.Models format="xaml" version="30" appVersion="10.1.0.81"?>
 <Page xmlns="http://prototypes.infragistics.com/"
-                                                                                 Id="680d0d33-4184-4413-8ef0-e396364b1e18">
+                                                                                 xmlns:d="http://prototypes.infragistics.com/views/design"
+                                                                                 Id="680d0d33-4184-4413-8ef0-e396364b1e18" d:Design.ShowGuides="False">
     <Page.Content>
         <Content Width="1024" Height="768" Id="b51deb13-97b8-49a4-b4d3-450e3396fff2">
             <Content.Layers>
@@ -21,7 +22,73 @@
     <Page.Scenes>
         <Scene Title="Start" Created="11/29/2017 11:53:48" Id="e90909ef-3ff7-4085-8a97-942aafd31b9c">
             <Scene.KeyFrames>
-                <KeyFrame Id="344df79b-9722-42c0-af2d-d7fa432591c3" />
+                <KeyFrame Id="344df79b-9722-42c0-af2d-d7fa432591c3">
+                    <KeyFrame.Operations>
+                        <Add Property="Panel.Children" Target="b10afe27-c525-436c-8a2b-0280143cafa6">
+                            <Add.Item>
+                                <MapMock MockType="Street Map" Id="432e3524-6851-4296-978f-f40a45396d2f" Panel.Bounds="230,186,553{5,2147483647},220{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b10afe27-c525-436c-8a2b-0280143cafa6">
+                            <Add.Item>
+                                <ComboBox Hint="Filtaring by type" Id="042a777d-197d-4256-b073-613a85777f2e" Panel.Bounds="437,141,150{5,2147483647},28{5,2147483647}">
+                                    <ComboBox.Items>
+                                        <Item Text="Hotel" Id="c5142957-e559-4c15-bdc9-60f113c1b122" />
+                                        <Item Text="Restourant" Id="c498e171-a477-4bf9-93fa-56687dab27ad" />
+                                        <Item Text="Camping" Id="70111cf9-0cdc-478f-85dd-89d7045d4e74" />
+                                        <Item Text="Private home" Id="070aa475-bdb9-4bf6-8d63-b53ea2de40ce" />
+                                        <Item Text="Bar" Id="58b744f6-063e-4f14-bb53-11c11f42c9dd" />
+                                        <Item Text="Coffee Shop" Id="49c29f70-65be-4f02-a7c2-1cc9babaf0fc" />
+                                        <Item Text="Mountain Cabin" Id="51a87f2e-47ff-4214-84f6-51f2d6f1c0bc" />
+                                    </ComboBox.Items>
+                                </ComboBox>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="042a777d-197d-4256-b073-613a85777f2e" Target="b10afe27-c525-436c-8a2b-0280143cafa6">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="e49cab05-dfc9-4eae-b644-c9d21aebd33f" Name="NavBar" Panel.Bounds="24,10,0*,0*">
+                                    <Group.Children>
+                                        <Rectangle Id="f1a6ea14-785e-4efe-8a3e-692457709172" Panel.Bounds="0,0,984{5,2147483647},110{5,2147483647}" />
+                                        <Rectangle Id="9973d7ce-5788-450f-987f-2ea35f413dee" Panel.Bounds="29,13,122{5,2147483647},78{5,2147483647}" />
+                                        <Button Text="Login" Id="da278562-f067-4111-97b4-a324018dfae8" Panel.Bounds="806,61,80{5,2147483647},35{5,2147483647}" />
+                                        <Button Text="Register" Id="84ed4b4a-1fb2-4b5c-ab64-187a680b4116" Panel.Bounds="895,61,80{5,2147483647},35{5,2147483647}" />
+                                        <Link Text="Contacts" FontSize="21" FontStyle="Normal|Underline" Id="2565f020-f704-40fa-bc33-65c72c933895" Panel.Bounds="665,67,5*{5,2147483647},5*{5,2147483647}" />
+                                        <Link Text="Articles" FontSize="21" FontStyle="Normal|Underline" Id="850eb38c-6b5e-4de6-ab85-6efbc586e6f8" Panel.Bounds="450,67,5*{5,2147483647},5*{5,2147483647}">
+                                            <Link.Click>
+                                                <CommandNavigate Screen="/Articals List.screen" Created="12/11/2017 11:45:16" Id="6ac8c0df-a373-4e54-9f5a-2581e86cc781">
+                                                    <CommandNavigate.Transition>
+                                                        <NavigateTransition Duration="0" />
+                                                    </CommandNavigate.Transition>
+                                                </CommandNavigate>
+                                            </Link.Click>
+                                        </Link>
+                                        <Label RichText="&lt;Run FontSize=&quot;24&quot; &gt;Paw Guide&lt;/Run&gt;" Align="Center" Id="9ed3fa9f-cf05-46d9-938a-d08d12fb13b0" Panel.Bounds="34,18,112{5,2147483647},74{5,2147483647}" />
+                                        <Link Text="Add new place" FontSize="21" FontFamily="Open Sans" FontStyle="Normal|Underline" Id="8cd40b5f-c50c-4964-9059-196ed33148fb" Panel.Bounds="206,67,5*{5,2147483647},5*{5,2147483647}">
+                                            <Link.Click>
+                                                <CommandNavigate Screen="/Adding New Location.screen" Created="12/11/2017 11:46:20" Id="d86c8688-381d-4b08-8d61-5cfcc94772c3">
+                                                    <CommandNavigate.Transition>
+                                                        <NavigateTransition Duration="0" />
+                                                    </CommandNavigate.Transition>
+                                                </CommandNavigate>
+                                            </Link.Click>
+                                        </Link>
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="042a777d-197d-4256-b073-613a85777f2e" Target="b10afe27-c525-436c-8a2b-0280143cafa6">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="5201789d-5491-4a5a-bdad-a0976a3a5ebd" Name="Footer" Panel.Bounds="24,658,0*,0*">
+                                    <Group.Children>
+                                        <Rectangle Id="3a8eef47-b2c0-4cf3-9d7c-9b16a19b9406" Panel.Bounds="0,0,984{5,2147483647},100{5,2147483647}" />
+                                        <Label RichText="Copyright © 2017. Paw Guid" FontFamily="Open Sans" Id="e6ef62b4-46cb-4afc-9105-681784331ec1" Panel.Bounds="413,71,145*{5,2147483647},29{5,2147483647}" />
+                                        <Icon CatalogId="fa-facebook-official" Id="58cf547c-8001-424b-ab10-f2ee59f466fa" Panel.Bounds="472,7,32{5,2147483647},32{5,2147483647}" />
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                    </KeyFrame.Operations>
+                </KeyFrame>
             </Scene.KeyFrames>
         </Scene>
     </Page.Scenes>

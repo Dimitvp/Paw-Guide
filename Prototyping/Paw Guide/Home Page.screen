@@ -21,7 +21,90 @@
     <Page.Scenes>
         <Scene Title="Start" Created="11/29/2017 11:53:48" Id="e90909ef-3ff7-4085-8a97-942aafd31b9c">
             <Scene.KeyFrames>
-                <KeyFrame Id="344df79b-9722-42c0-af2d-d7fa432591c3" />
+                <KeyFrame Id="344df79b-9722-42c0-af2d-d7fa432591c3">
+                    <KeyFrame.Operations>
+                        <Add Property="Panel.Children" Target="b10afe27-c525-436c-8a2b-0280143cafa6">
+                            <Add.Item>
+                                <MapMock MockType="Street Map" Id="69d72616-69ce-4324-a8dd-47a623ae8b3a" Panel.Bounds="230,186,553{5,2147483647},220{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b10afe27-c525-436c-8a2b-0280143cafa6">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="86c5c612-a9db-4aed-a8b8-09a14d89a5ae" Name="NavBar" Panel.Bounds="24,10,0*,0*">
+                                    <Group.Children>
+                                        <Rectangle Id="bf6af9aa-675a-42ce-87c0-6d55eb5c7d78" Panel.Bounds="0,0,984{5,2147483647},110{5,2147483647}" />
+                                        <Rectangle Id="9722a441-7f02-43d6-b20e-1a8427d17a1a" Panel.Bounds="29,13,122{5,2147483647},78{5,2147483647}" />
+                                        <Button Text="Logout" Id="722e0d76-c3e1-4b60-9fd4-82eb6536dc11" Panel.Bounds="895,61,80{5,2147483647},35{5,2147483647}">
+                                            <Button.Click>
+                                                <CommandNavigate Screen="/Landing Page - Duplicate.screen" Created="12/11/2017 11:16:40" Id="dbe18d39-e90a-4c33-a53a-bc6d0fade212">
+                                                    <CommandNavigate.Transition>
+                                                        <NavigateTransition Duration="0" />
+                                                    </CommandNavigate.Transition>
+                                                </CommandNavigate>
+                                            </Button.Click>
+                                        </Button>
+                                        <Link Text="Contacts" FontSize="21" FontStyle="Normal|Underline" Id="a6b6a161-80ad-47ec-a4e9-2ea6b0d56694" Panel.Bounds="447,61,5*{5,2147483647},5*{5,2147483647}" />
+                                        <Link Text="Articles" FontSize="21" FontStyle="Normal|Underline" Id="543d804c-c15b-4019-8182-e8713bbdb94a" Panel.Bounds="335,61,5*{5,2147483647},5*{5,2147483647}">
+                                            <Link.Click>
+                                                <CommandNavigate Screen="/Articals List.screen" Created="12/11/2017 11:44:57" Id="587d4796-8f02-4d70-97e8-6c840a60e93e">
+                                                    <CommandNavigate.Transition>
+                                                        <NavigateTransition Duration="0" />
+                                                    </CommandNavigate.Transition>
+                                                </CommandNavigate>
+                                            </Link.Click>
+                                        </Link>
+                                        <Label RichText="&lt;Run FontSize=&quot;24&quot; &gt;Paw Guide&lt;/Run&gt;" Align="Center" Id="034d7bd5-375e-4eee-a3b9-84bfac6b13c8" Panel.Bounds="34,18,112{5,2147483647},74{5,2147483647}" />
+                                        <Link Text="Add new place" FontSize="21" FontFamily="Open Sans" FontStyle="Normal|Underline" Id="0434d3fe-09c4-4f70-abab-06547955c2ae" Panel.Bounds="163,63,5*{5,2147483647},5*{5,2147483647}">
+                                            <Link.Click>
+                                                <CommandNavigate Screen="/Adding New Location.screen" Created="12/11/2017 11:46:02" Id="025a6105-ee0b-40e9-b5a4-dbb794dbe7a2">
+                                                    <CommandNavigate.Transition>
+                                                        <NavigateTransition Duration="0" />
+                                                    </CommandNavigate.Transition>
+                                                </CommandNavigate>
+                                            </Link.Click>
+                                        </Link>
+                                        <Label RichText="Hi Username, &#xD;&#xA;Admin/Moderator/None" FontFamily="Open Sans" Id="70c40075-12b8-41d0-adde-2e43d422f1a6" Panel.Bounds="831,3,150{5,2147483647},18*{5,2147483647}" />
+                                        <Link Text="Admin/Moderator Panel" FontSize="21" FontFamily="Open Sans" FontStyle="Normal|Underline" Id="1a66ac94-55ee-4c82-84c3-5af2a5f41598" Panel.Bounds="641,62,5*{5,2147483647},5*{5,2147483647}">
+                                            <Link.Click>
+                                                <CommandNavigate Screen="/Admin Page.screen" Created="12/11/2017 11:38:09" Id="d933f3e6-c223-4a25-8717-40217d0a959f">
+                                                    <CommandNavigate.Transition>
+                                                        <NavigateTransition Duration="0" />
+                                                    </CommandNavigate.Transition>
+                                                </CommandNavigate>
+                                            </Link.Click>
+                                        </Link>
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b10afe27-c525-436c-8a2b-0280143cafa6">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="b367e8c7-7dff-4d8c-a725-5d6b17918d65" Name="Footer" Panel.Bounds="24,658,0*,0*">
+                                    <Group.Children>
+                                        <Rectangle Id="b0436458-914c-4926-bc43-d599d573a46b" Panel.Bounds="0,0,984{5,2147483647},100{5,2147483647}" />
+                                        <Label RichText="Copyright © 2017. Paw Guid" FontFamily="Open Sans" Id="d56f7d89-4bc2-4e65-b052-26fd0df197f5" Panel.Bounds="413,71,145*{5,2147483647},29{5,2147483647}" />
+                                        <Icon CatalogId="fa-facebook-official" Id="81dce1e9-c9a2-43e2-b3a3-9b42f6da9029" Panel.Bounds="472,7,32{5,2147483647},32{5,2147483647}" />
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b10afe27-c525-436c-8a2b-0280143cafa6">
+                            <Add.Item>
+                                <ComboBox Hint="Filtaring by type" Id="c6f002a9-5419-4c77-a072-29fa9b67c7ab" Panel.Bounds="437,141,150{5,2147483647},28{5,2147483647}">
+                                    <ComboBox.Items>
+                                        <Item Text="Hotel" Id="573b0134-5cc3-47ab-9a6b-d89fca5be1b2" />
+                                        <Item Text="Restourant" Id="aed2f6bd-4477-4977-845d-1a12dd2827e0" />
+                                        <Item Text="Camping" Id="d86e0ab4-be60-40ea-8ff0-a6a3ed0e95b0" />
+                                        <Item Text="Private home" Id="d3d29df3-defb-40eb-a747-d2ae1d15e750" />
+                                        <Item Text="Bar" Id="21de5d69-9b5e-4663-a6e2-3e5125eef743" />
+                                        <Item Text="Coffee Shop" Id="0f185d44-0e99-4719-9334-384891681894" />
+                                        <Item Text="Mountain Cabin" Id="16f75530-d77f-4b77-90b6-d7eab097f705" />
+                                    </ComboBox.Items>
+                                </ComboBox>
+                            </Add.Item>
+                        </Add>
+                    </KeyFrame.Operations>
+                </KeyFrame>
             </Scene.KeyFrames>
         </Scene>
     </Page.Scenes>

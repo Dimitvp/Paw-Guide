@@ -1,0 +1,73 @@
+﻿<?Infragistics.Models format="xaml" version="30" appVersion="10.1.0.81"?>
+<Page xmlns="http://prototypes.infragistics.com/"
+                                                                                 Id="36227fbd-a57b-4b69-8e6e-27bf77b4d90c">
+    <Page.Content>
+        <Content Width="1024" Height="768" Id="f1dd970c-c401-4892-9621-6ea8c928b2e2">
+            <Content.Layers>
+                <Layer Id="2183ffd3-00d5-4b34-b052-514b9e8ad7fb" Panel.Layout="Stretch" />
+                <AnnotationsLayer Id="e755e8e6-039d-40e2-bf4c-9165514909e2" Panel.Layout="Stretch" />
+            </Content.Layers>
+            <Content.Viewbox>
+                <Viewbox Size="1024,768" Id="7ac40c29-316d-4593-ad8f-611bdd096177" />
+            </Content.Viewbox>
+            <Content.GuidesInfo>
+                <GuidesInfo Id="7263f97f-2500-425f-b66c-ddee002ea897" />
+            </Content.GuidesInfo>
+        </Content>
+    </Page.Content>
+    <Page.Device>
+        <DeviceInfo Id="Browser" Orientation="None" />
+    </Page.Device>
+    <Page.Scenes>
+        <Scene Title="Start" Created="12/11/2017 11:58:43" Id="ed02bf10-9bac-45ea-bcc5-4d434da68f22">
+            <Scene.KeyFrames>
+                <KeyFrame Id="51a7bfa0-1b32-48fe-997c-17cbfece2fff">
+                    <KeyFrame.Operations>
+                        <Add Property="Panel.Children" Target="2183ffd3-00d5-4b34-b052-514b9e8ad7fb">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="7bd18537-c840-4a99-89cd-c19d9cc7b69b" Name="NavBar" Panel.Bounds="24,10,0*,0*">
+                                    <Group.Children>
+                                        <Rectangle Id="3f2881b4-96b5-4ab5-8a8f-6048d5590b0a" Panel.Bounds="0,0,984{5,2147483647},110{5,2147483647}" />
+                                        <Rectangle Id="8f0f9fe2-74bb-4805-824f-cd358c32f3ac" Panel.Bounds="29,13,122{5,2147483647},78{5,2147483647}" />
+                                        <Button Text="Login" Id="d81153ac-4313-4e08-8b75-71899b0182c9" Panel.Bounds="806,61,80{5,2147483647},35{5,2147483647}" />
+                                        <Button Text="Register" Id="2a9b7176-ac17-4eaf-bdc2-947589b16687" Panel.Bounds="895,61,80{5,2147483647},35{5,2147483647}" />
+                                        <Link Text="Contacts" FontSize="21" FontStyle="Normal|Underline" Id="e6b34d11-2bb8-4c51-81bf-79bd849564e8" Panel.Bounds="665,67,5*{5,2147483647},5*{5,2147483647}" />
+                                        <Link Text="Articles" FontSize="21" FontStyle="Normal|Underline" Id="c49950f5-2bdf-4c95-be6f-8fe9a9f2a4a0" Panel.Bounds="450,67,5*{5,2147483647},5*{5,2147483647}" />
+                                        <Label RichText="&lt;Run FontSize=&quot;24&quot; &gt;Paw Guide&lt;/Run&gt;" Align="Center" Id="10d6f937-b1c2-4e44-9a4e-0f56a100ba06" Panel.Bounds="34,18,112{5,2147483647},74{5,2147483647}" />
+                                        <Link Text="Add new place" FontSize="21" FontFamily="Open Sans" FontStyle="Normal|Underline" Id="76ac4e24-1672-45be-bf31-ec63aae4c64a" Panel.Bounds="206,67,5*{5,2147483647},5*{5,2147483647}" />
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="2183ffd3-00d5-4b34-b052-514b9e8ad7fb">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="c8d23db9-c1ee-47f1-847c-152e7387a852" Name="Footer" Panel.Bounds="24,658,0*,0*">
+                                    <Group.Children>
+                                        <Rectangle Id="30b6f40d-872d-4ef2-8739-310d7dd763f0" Panel.Bounds="0,0,984{5,2147483647},100{5,2147483647}" />
+                                        <Label RichText="Copyright © 2017. Paw Guid" FontFamily="Open Sans" Id="7baf6073-6b1a-46ce-9250-d996539f5d83" Panel.Bounds="413,71,145*{5,2147483647},29{5,2147483647}" />
+                                        <Icon CatalogId="fa-facebook-official" Id="fda0916a-53cc-4eba-858e-c1e09de417d1" Panel.Bounds="472,7,32{5,2147483647},32{5,2147483647}" />
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="2183ffd3-00d5-4b34-b052-514b9e8ad7fb">
+                            <Add.Item>
+                                <Image Id="a704c5ba-7768-4658-b886-4443afe74e77" Panel.Bounds="362,138,319{5,2147483647},230{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="2183ffd3-00d5-4b34-b052-514b9e8ad7fb">
+                            <Add.Item>
+                                <Title RichText="Article Title" FontFamily="Open Sans" Id="9c5f23c9-f2ce-4e5c-8e19-5f35470be269" Panel.Bounds="428,380,5*{5,2147483647},5*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="2183ffd3-00d5-4b34-b052-514b9e8ad7fb">
+                            <Add.Item>
+                                <Label RichText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec enim diam vulputate ut pharetra. A pellentesque sit amet porttitor eget dolor morbi non arcu. Vitae tortor condimentum lacinia quis. Bibendum at varius vel pharetra vel. Molestie ac feugiat sed lectus vestibulum mattis. Cursus vitae congue mauris rhoncus aenean vel elit scelerisque mauris. Lorem ipsum dolor sit amet consectetur adipiscing. Viverra orci sagittis eu volutpat odio facilisis. Lorem mollis aliquam ut porttitor leo a diam sollicitudin tempor. Lectus quam id leo in. Massa tempor nec feugiat nisl pretium. Risus nec feugiat in fermentum posuere urna nec tincidunt praesent. Mauris nunc congue nisi vitae suscipit tellus mauris.&#xD;&#xA;&#xD;&#xA;Est pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus. Duis tristique sollicitudin nibh sit amet commodo. Id semper risus in hendrerit gravida rutrum quisque. Aliquet nibh praesent tristique magna sit. Metus vulputate eu scelerisque felis imperdiet. Massa tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada. Amet massa vitae tortor condimentum lacinia quis. Quam vulputate dignissim suspendisse in est ante in nibh. Mi bibendum neque egestas congue quisque egestas diam in. Tortor vitae purus faucibus ornare suspendisse sed nisi lacus. Habitant morbi tristique senectus et netus et malesuada. In massa tempor nec feugiat nisl pretium fusce. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat. Eu consequat ac felis donec. Pharetra magna ac placerat vestibulum lectus mauris ultrices. Pulvinar pellentesque habitant morbi tristique senectus et netus et.&#xD;&#xA;&#xD;&#xA;Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Felis eget velit aliquet sagittis id consectetur. Et sollicitudin ac orci phasellus. Aliquam sem fringilla ut morbi tincidunt augue interdum. Ridiculus mus mauris vitae ultricies. Nunc sed augue lacus viverra. Arcu vitae elementum curabitur vitae. Imperdiet massa tincidunt nunc pulvinar. Adipiscing commodo elit at imperdiet. Orci ac auctor augue mauris augue neque gravida in fermentum. Elementum integer enim neque volutpat ac tincidunt vitae. Tortor pretium viverra suspendisse potenti. Nisi scelerisque eu ultrices vitae auctor eu.&#xD;&#xA;&#xD;&#xA;Integer malesuada nunc vel risus commodo viverra maecenas accumsan lacus. Malesuada fames ac turpis egestas integer eget aliquet. In arcu cursus euismod quis. Pharetra massa massa ultricies mi. Nisl nisi scelerisque eu ultrices vitae auctor eu augue ut. Maecenas volutpat blandit aliquam etiam erat velit. Lacus vestibulum sed arcu non odio euismod lacinia at quis. Nibh tellus molestie nunc non. In hac habitasse platea dictumst quisque sagittis purus sit. Aliquet nibh praesent tristique magna sit amet. Ac turpis egestas sed tempus urna et pharetra pharetra massa. Nunc lobortis mattis aliquam faucibus purus in massa tempor nec. Dictum non consectetur a erat nam at lectus. Mi in nulla posuere sollicitudin aliquam ultrices sagittis.&#xD;&#xA;&#xD;&#xA;Vitae sapien pellentesque habitant morbi tristique senectus et netus. Viverra aliquet eget sit amet tellus cras adipiscing enim eu. Elit ut aliquam purus sit amet luctus venenatis lectus. Dolor sed viverra ipsum nunc aliquet bibendum enim facilisis gravida. Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis. Risus feugiat in ante metus dictum at tempor commodo. Sit amet aliquam id diam maecenas ultricies mi. Viverra aliquet eget sit amet tellus cras. Vitae sapien pellentesque habitant morbi tristique senectus et. Amet nisl suscipit adipiscing bibendum." FontFamily="Open Sans" Id="118cf01c-b6c9-4335-aa53-ffb9b291e3e2" Panel.Bounds="89,434,865{5,2147483647},201{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                    </KeyFrame.Operations>
+                </KeyFrame>
+            </Scene.KeyFrames>
+        </Scene>
+    </Page.Scenes>
+</Page>
