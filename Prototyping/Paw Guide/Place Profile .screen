@@ -1,0 +1,67 @@
+﻿<?Infragistics.Models format="xaml" version="30" appVersion="10.1.0.81"?>
+<Page xmlns="http://prototypes.infragistics.com/"
+                                                                                 Id="4dcc84dc-3e2f-4fa4-bb43-e8a9ec8c3698">
+    <Page.Content>
+        <Content Width="1024" Height="768" Id="9c65aba0-b773-4111-b95f-d35a1d0e647f">
+            <Content.Layers>
+                <Layer Id="ea81f498-8420-4671-bf20-b445459d30f0" Panel.Layout="Stretch" />
+                <AnnotationsLayer Id="732204ea-6e71-4f8a-b971-f5d761289147" Panel.Layout="Stretch" />
+            </Content.Layers>
+            <Content.Viewbox>
+                <Viewbox Size="1024,768" Id="99f3f4a7-b38b-45d8-8b59-3c2e2a43184f" />
+            </Content.Viewbox>
+            <Content.GuidesInfo>
+                <GuidesInfo Id="c1aa8a07-1f18-4267-a8e0-b7262f8b5400" />
+            </Content.GuidesInfo>
+        </Content>
+    </Page.Content>
+    <Page.Device>
+        <DeviceInfo Id="Browser" Orientation="None" />
+    </Page.Device>
+    <Page.Scenes>
+        <Scene Title="Start" Created="12/12/2017 08:44:50" Id="9531af8b-9345-4a1b-8db1-600a529ae8ea">
+            <Scene.KeyFrames>
+                <KeyFrame Id="fa80e56c-50c3-422c-933e-d6a6bda91717">
+                    <KeyFrame.Operations>
+                        <Add Property="Panel.Children" Target="ea81f498-8420-4671-bf20-b445459d30f0">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="24684923-69c9-4f02-a084-dbadbc57fcd0" Name="NavBar" Panel.Bounds="24,10,0*,0*">
+                                    <Group.Children>
+                                        <Rectangle Id="7dfa4a1a-8458-47a5-a496-7ff9ff45752b" Panel.Bounds="0,0,984{5,2147483647},110{5,2147483647}" />
+                                        <Rectangle Id="d70c14c6-e6c3-4eee-b34c-616f7e7652f8" Panel.Bounds="29,13,122{5,2147483647},78{5,2147483647}" />
+                                        <Button Text="Logout" Id="7bed9ce6-e8a6-477d-9796-4eddefb22635" Panel.Bounds="895,61,80{5,2147483647},35{5,2147483647}">
+                                            <Button.Click>
+                                                <CommandNavigate Screen="/Landing Page - Duplicate.screen" Created="12/12/2017 08:47:22" Id="f259b757-d8bb-42ea-9111-48e598ad91d7">
+                                                    <CommandNavigate.Transition>
+                                                        <NavigateTransition Duration="0" />
+                                                    </CommandNavigate.Transition>
+                                                </CommandNavigate>
+                                            </Button.Click>
+                                        </Button>
+                                        <Link Text="Contacts" FontSize="21" FontStyle="Normal|Underline" Id="4d66fdec-6d1d-4ea1-9042-34f706e38578" Panel.Bounds="447,61,5*{5,2147483647},5*{5,2147483647}" />
+                                        <Link Text="Articles" FontSize="21" FontStyle="Normal|Underline" Id="7c62d2a4-b7d9-4e88-be99-7d17250b8a5a" Panel.Bounds="335,61,5*{5,2147483647},5*{5,2147483647}" />
+                                        <Label RichText="&lt;Run FontSize=&quot;24&quot; &gt;Paw Guide&lt;/Run&gt;" Align="Center" Id="3669321b-c3b9-499a-8a28-2d5c9788be8c" Panel.Bounds="34,18,112{5,2147483647},74{5,2147483647}" />
+                                        <Link Text="Add new place" FontSize="21" FontFamily="Open Sans" FontStyle="Normal|Underline" Id="02d7b788-3d9c-4d3e-88ef-d04ec3dff09b" Panel.Bounds="163,63,5*{5,2147483647},5*{5,2147483647}" />
+                                        <Label RichText="Hi Username, &#xD;&#xA;Admin/Moderator/None" FontFamily="Open Sans" Id="2da58584-aecb-40f9-b34c-0c5f4fa573b7" Panel.Bounds="831,3,150{5,2147483647},18*{5,2147483647}" />
+                                        <Link Text="Admin/Moderator Panel" FontSize="21" FontFamily="Open Sans" FontStyle="Normal|Underline" Id="f2b95216-d246-4ed6-b496-d2f3c481a962" Panel.Bounds="641,62,5*{5,2147483647},5*{5,2147483647}" />
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="ea81f498-8420-4671-bf20-b445459d30f0">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="72e2cc6d-1b79-4e8c-bd7f-6b4d066c2b51" Name="Footer" Panel.Bounds="24,658,0*,0*">
+                                    <Group.Children>
+                                        <Rectangle Id="bd4af8f8-51e7-4bf7-aa73-060369f22537" Panel.Bounds="0,0,984{5,2147483647},100{5,2147483647}" />
+                                        <Label RichText="Copyright © 2017. Paw Guid" FontFamily="Open Sans" Id="32f72542-d6ad-41be-8ecf-5ffc1b407edb" Panel.Bounds="413,71,145*{5,2147483647},29{5,2147483647}" />
+                                        <Icon CatalogId="fa-facebook-official" Id="0608ed1c-a644-43f8-ac20-f2f1d26fbadc" Panel.Bounds="472,7,32{5,2147483647},32{5,2147483647}" />
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                    </KeyFrame.Operations>
+                </KeyFrame>
+            </Scene.KeyFrames>
+        </Scene>
+    </Page.Scenes>
+</Page>

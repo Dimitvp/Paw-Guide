@@ -21,7 +21,46 @@
     <Page.Scenes>
         <Scene Title="Start" Created="11/29/2017 11:53:48" Id="e90909ef-3ff7-4085-8a97-942aafd31b9c">
             <Scene.KeyFrames>
-                <KeyFrame Id="344df79b-9722-42c0-af2d-d7fa432591c3" />
+                <KeyFrame Id="344df79b-9722-42c0-af2d-d7fa432591c3">
+                    <KeyFrame.Operations>
+                        <Add Property="Panel.Children" Target="b10afe27-c525-436c-8a2b-0280143cafa6">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="a6ca6e23-2d57-46e4-b65e-b5a2b20b29fe" Name="NavBar" Panel.Bounds="24,10,0*,0*">
+                                    <Group.Children>
+                                        <Rectangle Id="29f79b89-51ec-4d0a-9e57-d55ec4ee3ebb" Panel.Bounds="0,0,984{5,2147483647},110{5,2147483647}" />
+                                        <Rectangle Id="ad2ec2c8-ead6-49b2-b88f-dfda9aa1b5ee" Panel.Bounds="29,13,122{5,2147483647},78{5,2147483647}" />
+                                        <Button Text="Logout" Id="7a5702a4-61fa-465a-a5a8-0c68adec31c1" Panel.Bounds="895,61,80{5,2147483647},35{5,2147483647}">
+                                            <Button.Click>
+                                                <CommandNavigate Screen="/Landing Page - Duplicate.screen" Created="12/12/2017 08:48:03" Id="f17b37fe-7098-4334-83c9-bb561db8b30f">
+                                                    <CommandNavigate.Transition>
+                                                        <NavigateTransition Duration="0" />
+                                                    </CommandNavigate.Transition>
+                                                </CommandNavigate>
+                                            </Button.Click>
+                                        </Button>
+                                        <Link Text="Contacts" FontSize="21" FontStyle="Normal|Underline" Id="7143e3b3-86b9-4171-9a31-1e19920c1e20" Panel.Bounds="447,61,5*{5,2147483647},5*{5,2147483647}" />
+                                        <Link Text="Articles" FontSize="21" FontStyle="Normal|Underline" Id="48214655-2813-46d6-9c81-09c06e4a0600" Panel.Bounds="335,61,5*{5,2147483647},5*{5,2147483647}" />
+                                        <Label RichText="&lt;Run FontSize=&quot;24&quot; &gt;Paw Guide&lt;/Run&gt;" Align="Center" Id="ea1f244f-1d56-4957-b320-e7ca4ad24c9f" Panel.Bounds="34,18,112{5,2147483647},74{5,2147483647}" />
+                                        <Link Text="Add new place" FontSize="21" FontFamily="Open Sans" FontStyle="Normal|Underline" Id="7bc72b10-29c5-4bc8-a8cf-412d0c103416" Panel.Bounds="163,63,5*{5,2147483647},5*{5,2147483647}" />
+                                        <Label RichText="Hi Username, &#xD;&#xA;Admin/Moderator/None" FontFamily="Open Sans" Id="e2c2dd6d-d0b5-4897-8b05-0311d517a47c" Panel.Bounds="831,3,150{5,2147483647},18*{5,2147483647}" />
+                                        <Link Text="Admin/Moderator Panel" FontSize="21" FontFamily="Open Sans" FontStyle="Normal|Underline" Id="f8e92f02-b828-4e33-be77-9e70e828cb00" Panel.Bounds="641,62,5*{5,2147483647},5*{5,2147483647}" />
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b10afe27-c525-436c-8a2b-0280143cafa6">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="37b621a1-7d7f-4ad4-9a85-b2af24f6f2ef" Name="Footer" Panel.Bounds="24,658,0*,0*">
+                                    <Group.Children>
+                                        <Rectangle Id="4ee9a165-7f39-4626-86bc-29201bd880df" Panel.Bounds="0,0,984{5,2147483647},100{5,2147483647}" />
+                                        <Label RichText="Copyright © 2017. Paw Guid" FontFamily="Open Sans" Id="e081b9e9-7701-464d-832d-726120afae4f" Panel.Bounds="413,71,145*{5,2147483647},29{5,2147483647}" />
+                                        <Icon CatalogId="fa-facebook-official" Id="44eeca22-f5e0-498a-9301-c757d187d0da" Panel.Bounds="472,7,32{5,2147483647},32{5,2147483647}" />
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                    </KeyFrame.Operations>
+                </KeyFrame>
             </Scene.KeyFrames>
         </Scene>
     </Page.Scenes>

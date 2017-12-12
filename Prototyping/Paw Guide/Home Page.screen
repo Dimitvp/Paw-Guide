@@ -43,7 +43,15 @@
                                                 </CommandNavigate>
                                             </Button.Click>
                                         </Button>
-                                        <Link Text="Contacts" FontSize="21" FontStyle="Normal|Underline" Id="a6b6a161-80ad-47ec-a4e9-2ea6b0d56694" Panel.Bounds="447,61,5*{5,2147483647},5*{5,2147483647}" />
+                                        <Link Text="Contacts" FontSize="21" FontStyle="Normal|Underline" Id="a6b6a161-80ad-47ec-a4e9-2ea6b0d56694" Panel.Bounds="447,61,5*{5,2147483647},5*{5,2147483647}">
+                                            <Link.Click>
+                                                <CommandNavigate Screen="/Contacts.screen" Created="12/11/2017 14:38:57" Id="e1fc7505-d91f-413e-bad2-4ae5c8a89e93">
+                                                    <CommandNavigate.Transition>
+                                                        <NavigateTransition Duration="0" />
+                                                    </CommandNavigate.Transition>
+                                                </CommandNavigate>
+                                            </Link.Click>
+                                        </Link>
                                         <Link Text="Articles" FontSize="21" FontStyle="Normal|Underline" Id="543d804c-c15b-4019-8182-e8713bbdb94a" Panel.Bounds="335,61,5*{5,2147483647},5*{5,2147483647}">
                                             <Link.Click>
                                                 <CommandNavigate Screen="/Articals List.screen" Created="12/11/2017 11:44:57" Id="587d4796-8f02-4d70-97e8-6c840a60e93e">
@@ -63,7 +71,15 @@
                                                 </CommandNavigate>
                                             </Link.Click>
                                         </Link>
-                                        <Label RichText="Hi Username, &#xD;&#xA;Admin/Moderator/None" FontFamily="Open Sans" Id="70c40075-12b8-41d0-adde-2e43d422f1a6" Panel.Bounds="831,3,150{5,2147483647},18*{5,2147483647}" />
+                                        <Label RichText="Hi Username, &#xD;&#xA;Admin/Moderator/None" FontFamily="Open Sans" Id="70c40075-12b8-41d0-adde-2e43d422f1a6" Panel.Bounds="831,3,150{5,2147483647},18*{5,2147483647}">
+                                            <Label.Click>
+                                                <CommandNavigate Screen="/Edit Profile.screen" Created="12/11/2017 14:42:04" Id="4a2f22c7-4d35-482e-9691-7d0d183b70a7">
+                                                    <CommandNavigate.Transition>
+                                                        <NavigateTransition Duration="0" />
+                                                    </CommandNavigate.Transition>
+                                                </CommandNavigate>
+                                            </Label.Click>
+                                        </Label>
                                         <Link Text="Admin/Moderator Panel" FontSize="21" FontFamily="Open Sans" FontStyle="Normal|Underline" Id="1a66ac94-55ee-4c82-84c3-5af2a5f41598" Panel.Bounds="641,62,5*{5,2147483647},5*{5,2147483647}">
                                             <Link.Click>
                                                 <CommandNavigate Screen="/Admin Page.screen" Created="12/11/2017 11:38:09" Id="d933f3e6-c223-4a25-8717-40217d0a959f">

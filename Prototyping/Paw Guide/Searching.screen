@@ -29,7 +29,15 @@
                                     <Group.Children>
                                         <Rectangle Id="b57946e5-6494-42e8-a7e5-7187176dc0f6" Panel.Bounds="0,0,984{5,2147483647},110{5,2147483647}" />
                                         <Rectangle Id="3b64b3bb-9773-495f-9bc0-7d52b14eddb0" Panel.Bounds="29,13,122{5,2147483647},78{5,2147483647}" />
-                                        <Button Text="Logout" Id="4902fd94-fd07-4fb4-84d8-211129f7426a" Panel.Bounds="895,61,80{5,2147483647},35{5,2147483647}" />
+                                        <Button Text="Logout" Id="4902fd94-fd07-4fb4-84d8-211129f7426a" Panel.Bounds="895,61,80{5,2147483647},35{5,2147483647}">
+                                            <Button.Click>
+                                                <CommandNavigate Screen="/Landing Page - Duplicate.screen" Created="12/12/2017 08:44:14" Id="965f81f7-7822-4a81-bc42-b989f5110f78">
+                                                    <CommandNavigate.Transition>
+                                                        <NavigateTransition Duration="0" />
+                                                    </CommandNavigate.Transition>
+                                                </CommandNavigate>
+                                            </Button.Click>
+                                        </Button>
                                         <Link Text="Contacts" FontSize="21" FontStyle="Normal|Underline" Id="7bd19463-7fc3-4c7b-ae7c-939c22e7b0b7" Panel.Bounds="447,61,5*{5,2147483647},5*{5,2147483647}" />
                                         <Link Text="Articles" FontSize="21" FontStyle="Normal|Underline" Id="a33522c9-61be-4bad-8ab9-0dce55040e8b" Panel.Bounds="335,61,5*{5,2147483647},5*{5,2147483647}" />
                                         <Label RichText="&lt;Run FontSize=&quot;24&quot; &gt;Paw Guide&lt;/Run&gt;" Align="Center" Id="75270a45-d5a7-4aee-a24f-0e691bd17554" Panel.Bounds="34,18,112{5,2147483647},74{5,2147483647}" />
@@ -80,10 +88,18 @@
                             <Add.Item>
                                 <ListBox FontSize="24" Id="1fed9a93-27bc-4e42-9e9f-fe0d65394dcb" Panel.Bounds="120,305,792{5,2147483647},273{5,2147483647}">
                                     <ListBox.Items>
-                                        <Item Text="1. City name - " Id="e1d46a0c-5ff7-4f59-8966-cc6382095a4b" />
+                                        <Item Text="1. City name-" Id="e1d46a0c-5ff7-4f59-8966-cc6382095a4b">
+                                            <Item.Selected>
+                                                <CommandNavigate Screen="/Place Profile .screen" Created="12/12/2017 08:46:28" Id="15624798-bb47-4e73-8b43-ab68cc7375e1">
+                                                    <CommandNavigate.Transition>
+                                                        <NavigateTransition Duration="0" />
+                                                    </CommandNavigate.Transition>
+                                                </CommandNavigate>
+                                            </Item.Selected>
+                                        </Item>
                                         <Item Text="2. City name -" Id="4d382f48-69bd-4f9b-af35-1d08c3d955ab" />
                                         <Item Text="3. City name" Id="216798f6-e8ab-4a5e-af60-8478f08baf0d" />
-                                        <Item Text="4. City name" Id="fb5332ac-7dfd-4a2b-a831-dd8ff6c04be6" />
+                                        <Item Text="4. City name -" Id="fb5332ac-7dfd-4a2b-a831-dd8ff6c04be6" />
                                         <Item Text="5. City name" Id="e8459cc2-04b5-4bca-88bd-73eca0eeeccb" />
                                         <Item Text="New Item" Id="d2c6a0b9-de40-4fa9-b8f9-87e054f9b526" />
                                     </ListBox.Items>
