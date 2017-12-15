@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PawGuide.Common\PawGuide.Common.csproj" />
     <ProjectReference Include="..\PawGuide.Data\PawGuide.Data.csproj" />
     <ProjectReference Include="..\PawGuide.Services\PawGuide.Services.csproj" />
   </ItemGroup>

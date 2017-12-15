@@ -14,5 +14,9 @@
         public string Name { get; set; }
 
         public List<Article> Articles { get; set; } = new List<Article>();
+
+        public List<Ad> Ads { get; set; } = new List<Ad>();
+
+        public List<Business> Businesses { get; set; } = new List<Business>();
     }
 }

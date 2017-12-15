@@ -1,13 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace PawGuide.Web.Models.AccountViewModels
+﻿namespace PawGuide.Web.Models.AccountViewModels
 {
+    using System.ComponentModel.DataAnnotations;
+
+    using static Data.DataConstants;
+
     public class RegisterViewModel
     {
+        [Required]
+        [MinLength(UserNameMinLength)]
+        [MaxLength(UserNameMaxLength)]
+        public string Name { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -23,5 +26,10 @@ namespace PawGuide.Web.Models.AccountViewModels
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        //Phone
+        [Required]
+        [RegularExpression(@"\+\d{10,12}", ErrorMessage = "Phone must start with a '+' sign and contain between 10 and 12 symbols.")]
+        public string Phone { get; set; }
     }
 }

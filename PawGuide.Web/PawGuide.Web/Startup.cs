@@ -1,5 +1,6 @@
 ﻿namespace PawGuide.Web
 {
+    using AutoMapper;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
@@ -8,7 +9,8 @@
     using Microsoft.Extensions.DependencyInjection;
     using Data;
     using Data.Models;
-    using Services;
+    using Microsoft.AspNetCore.Mvc;
+    using Infrastructure.Extensions;
 
     public class Startup
     {
@@ -25,19 +27,35 @@
             services.AddDbContext<PawGuideDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<User, IdentityRole>()
+            services.AddIdentity<User, IdentityRole>(options =>
+                {
+                    options.Password.RequireDigit = false;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireUppercase = false;
+                    options.Password.RequireNonAlphanumeric = false;
+                })
                 .AddEntityFrameworkStores<PawGuideDbContext>()
                 .AddDefaultTokenProviders();
 
             // Add application services.
-            services.AddTransient<IEmailSender, EmailSender>();
 
-            services.AddMvc();
+            services.AddAutoMapper();
+
+            services.AddDomainServices();
+
+            services.AddRouting(routing => routing.LowercaseUrls = true);
+
+            services.AddMvc(options =>
+            {
+                options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseDatabaseMigration();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -55,6 +73,15 @@
 
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+                    name: "publications",
+                    template: "blog/articles/{id}/{title}",
+                    defaults: new { area = "Publications", controller = "Articles", action = "Details" });
+
+                routes.MapRoute(
+                    name: "areas",
+                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
