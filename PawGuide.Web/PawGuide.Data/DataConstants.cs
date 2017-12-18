@@ -11,6 +11,9 @@
         public const int BusinessAddressMinLength = 5;
         public const int BusinessAddressMaxLength = 250;
 
+        public const int CityMinLength = 3;
+        public const int CityMaxLength = 90;
+
         public const int PicUrlMinLength = 10;
         public const int PicUrlMaxLength = 2000;
     }

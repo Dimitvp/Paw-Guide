@@ -12,9 +12,10 @@ using System;
 namespace PawGuide.Data.Migrations
 {
     [DbContext(typeof(PawGuideDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171218171232_AddingNewColumnInBusiness")]
+    partial class AddingNewColumnInBusiness
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

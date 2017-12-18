@@ -21,6 +21,11 @@
         public string WebPageUrl { get; set; }
 
         [Required]
+        [MinLength(CityMinLength)]
+        [MaxLength(CityMaxLength)]
+        public string City { get; set; }
+
+        [Required]
         [MinLength(BusinessAddressMinLength)]
         [MaxLength(BusinessAddressMaxLength)]
         public string Address { get; set; }
