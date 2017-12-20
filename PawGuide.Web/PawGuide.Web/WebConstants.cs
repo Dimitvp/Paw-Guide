@@ -11,5 +11,6 @@
 
         public const string AdminArea = "Admin";
         public const string PublicationsArea = "Publications";
+        public const string BusinessArea = "Business";
     }
 }

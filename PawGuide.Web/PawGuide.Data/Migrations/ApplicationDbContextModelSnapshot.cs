@@ -212,6 +212,8 @@ namespace PawGuide.Data.Migrations
                     b.Property<string>("PicUrl")
                         .HasMaxLength(2000);
 
+                    b.Property<DateTime>("PublishDate");
+
                     b.Property<int>("Type");
 
                     b.Property<string>("WebPageUrl")

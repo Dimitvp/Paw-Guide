@@ -1,4 +1,5 @@
-﻿@model ArticleDetailsServiceModel
+﻿@using PawGuide.Web
+@model ArticleDetailsServiceModel
 @{
     ViewData["Title"] = Model.Title;
 }
@@ -6,4 +7,8 @@
 <h4><em>published by @Model.Author on @Model.PublishDate.ToShortDateString()</em></h4>
 <div>
     @Html.Raw(Model.Content)
+    @if (User.IsInRole(WebConstants.ArticleAuthorRole))
+    {
+        <button type="submit" class="btn btn-default">Edit</button>
+    }
 </div>

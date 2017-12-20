@@ -1,5 +1,6 @@
 ﻿namespace PawGuide.Data.Models
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
 
     using static DataConstants;
@@ -42,6 +43,8 @@
         [MinLength(PicUrlMinLength)]
         [MaxLength(PicUrlMaxLength)]
         public string PicUrl { get; set; }
+
+        public DateTime PublishDate { get; set; }
 
         public bool IsApproved { get; set; }
 

@@ -19,7 +19,8 @@
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Business>()
+            builder
+                .Entity<Business>()
                 .HasOne(a => a.Author)
                 .WithMany(u => u.Businesses)
                 .HasForeignKey(a => a.AuthorId);
