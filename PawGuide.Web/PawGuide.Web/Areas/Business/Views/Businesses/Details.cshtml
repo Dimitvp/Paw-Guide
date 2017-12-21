@@ -5,5 +5,26 @@
 <h2>@ViewData["Title"]</h2>
 <h4><em>published by @Model.Author on @Model.PublishDate.ToShortDateString()</em></h4>
 <div class="row text-center">
-    
+    <li class="list-group-item">
+        <img src="@Model.PicUrl" alt="Sample Image" width="300px"/>
+        <br/>
+        <p>
+
+            <h3>
+                @Html.DisplayFor(model => model.Type)
+            </h3>
+            @Model.City
+            <h3>
+                @Html.DisplayFor(model => model.PetType)
+            </h3>
+            @Model.LatLocation
+            <br />
+            @Model.LngLocation
+            <br />
+            @Model.Note
+            <br />
+            <a href="@Model.WebPageUrl">@Model.WebPageUrl</a>
+        </p>
+        <small>published by @Model.Author on @Model.PublishDate.ToShortDateString()</small>
+    </li>
 </div>
