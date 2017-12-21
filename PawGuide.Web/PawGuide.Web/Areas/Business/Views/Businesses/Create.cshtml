@@ -1,0 +1,74 @@
+﻿@model PublishBusinessFormModel
+@{
+    ViewData["Title"] = "Publish Business";
+}
+<h2 class="text-center">@ViewData["Title"]</h2>
+
+<div class="row text-center">
+    <div class="col-md-12">
+        <form method="post">
+            <h4>Add new Business.</h4>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Type"></label>
+                <select asp-for="Type" asp-items="Html.GetEnumSelectList<TypeBusiness>()" class="form-control"></select>
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="WebPageUrl"></label>
+                <input asp-for="WebPageUrl" class="form-control" />
+                <span asp-validation-for="WebPageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LatLocation"></label>
+                <input asp-for="LatLocation" class="form-control" />
+                <span asp-validation-for="LatLocation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LngLocation"></label>
+                <input asp-for="LngLocation" class="form-control" />
+                <span asp-validation-for="LngLocation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PetType"></label>
+                <select asp-for="PetType" asp-items="Html.GetEnumSelectList<PetType>()" class="form-control"></select>
+                <span asp-validation-for="PetType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Note"></label>
+                <input asp-for="Note" class="form-control" />
+                <span asp-validation-for="Note" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PicUrl"></label>
+                <input asp-for="PicUrl" class="form-control" />
+                <span asp-validation-for="PicUrl" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+}

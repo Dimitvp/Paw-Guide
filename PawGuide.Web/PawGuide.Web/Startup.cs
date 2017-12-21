@@ -17,6 +17,7 @@
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            
         }
 
         public IConfiguration Configuration { get; }
@@ -24,6 +25,7 @@
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddDbContext<PawGuideDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -49,6 +51,14 @@
             {
                 options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
             });
+
+            services.AddAuthentication().AddFacebook(fo =>
+            {
+                fo.AppId = Configuration["Authentication:Facebook:AppId"];
+                fo.AppSecret =
+                    Configuration["Authentication:Facebook:AppSecret"];
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

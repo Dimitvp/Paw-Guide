@@ -12,9 +12,10 @@ using System;
 namespace PawGuide.Data.Migrations
 {
     [DbContext(typeof(PawGuideDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171220121049_AddingPublishDateColumnInBusiness")]
+    partial class AddingPublishDateColumnInBusiness
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -246,6 +247,7 @@ namespace PawGuide.Data.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(100);
 
                     b.Property<string>("NormalizedEmail")

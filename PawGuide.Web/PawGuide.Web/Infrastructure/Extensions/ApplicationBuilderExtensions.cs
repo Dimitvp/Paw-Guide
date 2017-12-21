@@ -28,8 +28,7 @@
                         var roles = new[]
                         {
                             adminName,
-                            WebConstants.ModeratorRole,
-                            WebConstants.ArticleAuthorRole
+                            WebConstants.ModeratorRole
                         };
 
                         foreach (var role in roles)

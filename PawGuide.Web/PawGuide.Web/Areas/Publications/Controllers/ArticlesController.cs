@@ -14,8 +14,7 @@
     using static WebConstants;
 
     [Area(PublicationsArea)]
-    [Authorize(Roles = ArticleAuthorRole)]
-    [Authorize(Roles = AdministratorRole)]
+    [Authorize(Roles = "Administrator, Moderator")]
     public class ArticlesController : Controller
     {
         private readonly IArticleService articles;

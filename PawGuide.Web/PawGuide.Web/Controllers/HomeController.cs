@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using PawGuide.Web.Models;
-
-namespace PawGuide.Web.Controllers
+﻿namespace PawGuide.Web.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+    using PawGuide.Web.Models;
+    using System.Diagnostics;
+
     public class HomeController : Controller
     {
         public IActionResult Index()
         {
+            
             return View();
         }
 
