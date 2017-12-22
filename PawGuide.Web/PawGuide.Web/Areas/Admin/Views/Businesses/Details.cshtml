@@ -1,4 +1,4 @@
-﻿@model BusinessDetailsServiceModel
+﻿@model ApproveBusinessFormModel
 @{
     ViewData["Title"] = Model.Name;
 }
@@ -24,10 +24,15 @@
             <br />
             <a href="@Model.WebPageUrl">@Model.WebPageUrl</a>
         </p>
-        @if (User.Identity.Name.Equals(Model.Author))
-        {
-            <a class="btn btn-sm btn-primary" asp-area="Business" asp-controller="Businesses" asp-action="Edit">Edit</a>
-        }
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="IsApproved"></label>
+                @Html.RadioButtonFor(m => m.IsApproved, true) Yes
+                @Html.RadioButtonFor(m => m.IsApproved, false) No
+                <span asp-validation-for="IsApproved" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
         <small>published by @Model.Author on @Model.PublishDate.ToShortDateString()</small>
     </li>
 </div>

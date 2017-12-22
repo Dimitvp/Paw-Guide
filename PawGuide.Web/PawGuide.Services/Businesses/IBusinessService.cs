@@ -26,5 +26,21 @@
             bool isApproved,
             string note,
             string authorId);
+
+        Task<bool> EditAsync(
+            int id,
+            string name,
+            TypeBusiness type,
+            string webPageUrl,
+            string address,
+            double latLocation,
+            double lngLocation,
+            PetType petType,
+            string city,
+            string picUrl,
+            string note,
+            string authorId);
+
+        Task<bool> Exists(int id);
     }
 }

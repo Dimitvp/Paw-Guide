@@ -1,10 +1,10 @@
-﻿namespace PawGuide.Services.Businesses.Models
+﻿namespace PawGuide.Web.Areas.Admin.Models.Businesses
 {
     using System;
-    using AutoMapper;
-    using Data.Models;
+    using System.ComponentModel.DataAnnotations;
+    using PawGuide.Data.Models;
 
-    public class BusinessDetailsServiceModel
+    public class ApproveBusinessFormModel
     {
         public int Id { get; set; }
 
@@ -32,9 +32,5 @@
 
         public string Author { get; set; }
 
-        public void ConfigureMapping(Profile mapper)
-            => mapper
-                .CreateMap<Business, BusinessListingServiceModel>()
-                .ForMember(b => b.Author, cfg => cfg.MapFrom(b => b.Author.UserName));
     }
 }

@@ -75,5 +75,46 @@
 
             await this.db.SaveChangesAsync();
         }
+
+        public async Task<bool> EditAsync(
+            int id, 
+            string name, 
+            TypeBusiness type, 
+            string webPageUrl, 
+            string address, 
+            double latLocation,
+            double lngLocation, 
+            PetType petType, 
+            string city, 
+            string picUrl, 
+            string note, 
+            string authorId)
+        {
+            var business = await this.db.Businesses.FirstOrDefaultAsync(b => b.Id == id);
+
+            if (business == null)
+            {
+                return false;
+            }
+
+            business.Name = name;
+            business.Type = type;
+            business.WebPageUrl = webPageUrl;
+            business.Address = address;
+            business.LatLocation = latLocation;
+            business.LngLocation = lngLocation;
+            business.PetType = petType;
+            business.City = city;
+            business.PicUrl = picUrl;
+            business.IsApproved = false;
+            business.Note = note;
+
+            this.db.SaveChanges();
+
+            return true;
+        }
+
+        public async Task<bool> Exists(int id)
+            => await this.db.Businesses.AnyAsync(b => b.Id == id);
     }
 }

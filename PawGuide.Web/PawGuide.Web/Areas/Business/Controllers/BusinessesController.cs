@@ -64,5 +64,46 @@
 
             return RedirectToAction(nameof(Index));
         }
+
+        [Authorize]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var businessExists = await this.businesses.Exists(id);
+
+            if (!businessExists)
+            {
+                return NotFound();
+            }
+
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, PublishBusinessFormModel businessModel)
+        {
+            var userId = this.userManager.GetUserId(User);
+
+            var update = await this.businesses.EditAsync(
+                id,
+                businessModel.Name,
+                businessModel.Type,
+                businessModel.WebPageUrl,
+                businessModel.Address,
+                businessModel.LatLocation,
+                businessModel.LngLocation,
+                businessModel.PetType,
+                businessModel.City,
+                businessModel.PicUrl,
+                businessModel.Note,
+                userId);
+
+            if (!update == null)
+            {
+                return NotFound();
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
