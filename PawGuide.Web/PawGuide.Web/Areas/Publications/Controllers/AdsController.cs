@@ -15,7 +15,7 @@
     using static WebConstants;
 
     [Area(PublicationsArea)]
-    [Authorize(Roles = "Administrator, Moderator")]
+    [Authorize]
     public class AdsController : Controller
     {
         private readonly IPublicationService publications;
