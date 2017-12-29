@@ -28,7 +28,6 @@
             <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
             <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-
         <!-- Favicon and apple touch icons-->
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
         <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
@@ -52,7 +51,7 @@
     </environment>
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -67,22 +66,25 @@
                 <ul class="nav navbar-nav">
                     <li><a asp-area="Publications" asp-controller="Articles" asp-action="Index">Articles</a></li>
                     <li><a asp-area="Business" asp-controller="Businesses" asp-action="Index">Businesses</a></li>
+                    <li><a asp-area="Publications" asp-controller="Ads" asp-action="Index">Ads</a></li>
 
                     @if (User.IsInRole(WebConstants.AdministratorRole))
-                    {
-                        <li><a asp-area="Admin" asp-controller="Users" asp-action="Index">Users</a></li>
-                    }
+    {
+                <li><a asp-area="Admin" asp-controller="Users" asp-action="Index">Users</a></li>
+}
 
                     @if (User.IsInRole(WebConstants.ModeratorRole) || User.IsInRole(WebConstants.AdministratorRole))
-                    {
-                        <li><a asp-area="Business" asp-controller="Businesses" asp-action="ForApprovel">Moderator Panel</a></li>
-                        <li><a asp-area="Publications" asp-controller="Articles" asp-action="Create">Create Article</a></li>
-                    }
+    {
+                <li><a asp-area="Business" asp-controller="Businesses" asp-action="ForApproval">Moderator Panel Businesses</a></li>
+                <li><a asp-area="Publications" asp-controller="Ads" asp-action="ForApproval">Moderator Panel Ads</a></li>
+                <li><a asp-area="Publications" asp-controller="Articles" asp-action="Create">Create Article</a></li>
+}
 
                     @if (User.Identity.IsAuthenticated)
-                    {
-                        <li><a asp-area="Business" asp-controller="Businesses" asp-action="Create">Add Business</a></li>
-                    }
+    {
+                <li><a asp-area="Business" asp-controller="Businesses" asp-action="Create">Add Business</a></li>
+                <li><a asp-area="Publications" asp-controller="Ads" asp-action="Create">Create Ads</a></li>
+}
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
@@ -92,7 +94,7 @@
         <header>
 
             <!-- *** TOP ***
-        _________________________________________________________ -->
+            _________________________________________________________ -->
             <div id="top">
                 <div class="container">
                     <div class="row">
@@ -123,7 +125,7 @@
 
             <!-- *** TOP END *** -->
             <!-- *** NAVBAR ***
-        _________________________________________________________ -->
+            _________________________________________________________ -->
 
             <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
 
@@ -524,103 +526,103 @@
 
             <!-- *** NAVBAR END *** -->
         </header>
-    <!-- *** LOGIN MODAL ***
-    _________________________________________________________ -->
+        <!-- *** LOGIN MODAL ***
+        _________________________________________________________ -->
 
-    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
+        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
 
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="Login">Customer login</h4>
-                </div>
-                <div class="modal-body">
-                    <form action="customer-orders.html" method="post">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="email_modal" placeholder="email">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="password_modal" placeholder="password">
-                        </div>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="Login">Customer login</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="customer-orders.html" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="email_modal" placeholder="email">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="password_modal" placeholder="password">
+                            </div>
 
-                        <p class="text-center">
-                            <button asp-area="" asp-controller="Account" asp-action="Login" class="btn btn-template-main"><i class="fa fa-sign-in"></i> Log in</button>
-                        </p>
+                            <p class="text-center">
+                                <button asp-area="" asp-controller="Account" asp-action="Login" class="btn btn-template-main"><i class="fa fa-sign-in"></i> Log in</button>
+                            </p>
 
-                    </form>
+                        </form>
 
-                    <p class="text-center text-muted">Not registered yet?</p>
-                    <p class="text-center text-muted"><a href="customer-register.html"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
+                        <p class="text-center text-muted">Not registered yet?</p>
+                        <p class="text-center text-muted"><a href="customer-register.html"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- *** LOGIN MODAL END *** -->
+        <!-- *** LOGIN MODAL END *** -->
         @*<div class="container body-content">*@
         @RenderBody()
         <hr />
         <footer class="text-center">
             <p>&copy; 2017 - Paw Guide</p>
         </footer>
-    @*</div>*@
+        @*</div>*@
 
-    <environment include="Development">
-        <!-- #### JAVASCRIPT FILES ### -->
+        <environment include="Development">
+            <!-- #### JAVASCRIPT FILES ### -->
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script>
-            window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')
-        </script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+            <script>
+                window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')
+            </script>
+            <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-        <script src="js/jquery.cookie.js"></script>
-        <script src="js/waypoints.min.js"></script>
-        <script src="js/jquery.counterup.min.js"></script>
-        <script src="js/jquery.parallax-1.1.3.js"></script>
-        <script src="js/front.js"></script>
+            <script src="js/jquery.cookie.js"></script>
+            <script src="js/waypoints.min.js"></script>
+            <script src="js/jquery.counterup.min.js"></script>
+            <script src="js/jquery.parallax-1.1.3.js"></script>
+            <script src="js/front.js"></script>
 
-        <!-- owl carousel -->
-        <script src="js/owl.carousel.min.js"></script>
-        @*<script src="~/lib/jquery/dist/jquery.js"></script>*@
-        @*<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>*@
-    </environment>
-    <environment exclude="Development">
-        <!-- #### JAVASCRIPT FILES ### -->
+            <!-- owl carousel -->
+            <script src="js/owl.carousel.min.js"></script>
+            @*<script src="~/lib/jquery/dist/jquery.js"></script>*@
+            @*<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+                <script src="~/js/site.js" asp-append-version="true"></script>*@
+        </environment>
+        <environment exclude="Development">
+            <!-- #### JAVASCRIPT FILES ### -->
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script>
-            window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')
-        </script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+            <script>
+                window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')
+            </script>
+            <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-        <script src="js/jquery.cookie.js"></script>
-        <script src="js/waypoints.min.js"></script>
-        <script src="js/jquery.counterup.min.js"></script>
-        <script src="js/jquery.parallax-1.1.3.js"></script>
-        <script src="js/front.js"></script>
+            <script src="js/jquery.cookie.js"></script>
+            <script src="js/waypoints.min.js"></script>
+            <script src="js/jquery.counterup.min.js"></script>
+            <script src="js/jquery.parallax-1.1.3.js"></script>
+            <script src="js/front.js"></script>
 
-        <!-- owl carousel -->
-        <script src="js/owl.carousel.min.js"></script>
-        @*<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-            asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-            asp-fallback-test="window.jQuery"
-            crossorigin="anonymous"
-            integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
-    </script>
-    <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-            asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-            asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-            crossorigin="anonymous"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-    </script>
-    <script src="~/js/site.min.js" asp-append-version="true"></script>*@
-    </environment>
-</div>
-<!-- /#all -->
+            <!-- owl carousel -->
+            <script src="js/owl.carousel.min.js"></script>
+            @*<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                        asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                        asp-fallback-test="window.jQuery"
+                        crossorigin="anonymous"
+                        integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+                </script>
+                <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                        asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                        asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                        crossorigin="anonymous"
+                        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+                </script>
+                <script src="~/js/site.min.js" asp-append-version="true"></script>*@
+        </environment>
+    </div>
+    <!-- /#all -->
 
     @RenderSection("Scripts", required: false)
 </body>

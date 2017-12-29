@@ -108,7 +108,7 @@
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> ForApprovel(int page = 1)
+        public async Task<IActionResult> ForApproval(int page = 1)
             => View(new BusinessListingViewModel
             {
                 Businesses = await this.businesses.AllAsync(page),

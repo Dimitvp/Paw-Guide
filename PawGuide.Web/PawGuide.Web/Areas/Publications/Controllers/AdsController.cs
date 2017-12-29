@@ -1,28 +1,28 @@
 ﻿namespace PawGuide.Web.Areas.Publications.Controllers
 {
-    using Data.Models;
-    using Infrastructure.Extensions;
-    using Infrastructure.Filters;
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using Models.Articles;
-    using Services.Publications;
+    using Data.Models;
     using Services.Html;
-    using System.Threading.Tasks;
+    using Services.Publications;
     using Services.Publications.Models;
+    using Models.Ads;
+    using Infrastructure.Filters;
+    using Infrastructure.Extensions;
 
     using static WebConstants;
 
     [Area(PublicationsArea)]
     [Authorize(Roles = "Administrator, Moderator")]
-    public class ArticlesController : Controller
+    public class AdsController : Controller
     {
         private readonly IPublicationService publications;
         private readonly UserManager<User> userManager;
         private readonly IHtmlService html;
 
-        public ArticlesController(
+        public AdsController(
             IPublicationService publications,
             UserManager<User> userManager,
             IHtmlService html)
@@ -34,28 +34,35 @@
 
         [AllowAnonymous]
         public async Task<IActionResult> Index(int page = 1)
-            => View(new ArticleListingViewModel
+            => View(new AdListingViewModel
             {
-                Articles = await this.publications.AllArticlesAsync(page),
-                TotalArticles = await this.publications.TotalAsync(),
+                Ads = await this.publications.AllAdsAsync(page),
+                TotalAds = await this.publications.TotalAsync(),
                 CurrentPage = page
             });
 
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
-            => this.ViewOrNotFound(await this.publications.ArticleById(id));
+            => this.ViewOrNotFound(await this.publications.AdById(id));
 
         public IActionResult Create() => View();
 
         [HttpPost]
         [ValidateModelState]
-        public async Task<IActionResult> Create(PublishArticleFormModel model)
+        public async Task<IActionResult> Create(PublishAdFormModel model)
         {
             model.Content = this.html.Sanitize(model.Content);
 
             var userId = this.userManager.GetUserId(User);
 
-            await this.publications.CreateAsync(model.Title, model.Content, userId);
+            var isApproved = false;
+
+            await this.publications.CreateAsync(
+                model.Title,
+                model.Content,
+                model.PicUrl,
+                isApproved,
+                userId);
 
             return RedirectToAction(nameof(Index));
         }
@@ -63,26 +70,28 @@
         [Authorize]
         public async Task<IActionResult> Edit(int id)
         {
-            var articleExists = await this.publications.Exists(id);
+            var adExists = await this.publications.Exists(id);
 
-            if (!articleExists)
+            if (!adExists)
             {
                 return NotFound();
             }
 
-            return this.ViewOrNotFound(await this.publications.ArticleById(id));
+            return this.ViewOrNotFound(await this.publications.AdById(id));
         }
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, ArticleDetailsServiceModel articleModel)
+        public async Task<IActionResult> Edit(int id, AdDetailsServiceModel adModel)
         {
             var userId = this.userManager.GetUserId(User);
 
             var update = await this.publications.EditAsync(
                 id,
-                articleModel.Title,
-                articleModel.Content,
+                adModel.Title,
+                adModel.Content,
+                adModel.PicUrl,
+                adModel.IsApproved,
                 userId);
 
             if (!update == null)
@@ -92,5 +101,13 @@
 
             return RedirectToAction(nameof(Index));
         }
+
+        public async Task<IActionResult> ForApproval(int page = 1)
+            => View(new AdListingViewModel
+            {
+                Ads = await this.publications.AllAdsAsync(page),
+                TotalAds = await this.publications.TotalAsync(),
+                CurrentPage = page
+            });
     }
 }

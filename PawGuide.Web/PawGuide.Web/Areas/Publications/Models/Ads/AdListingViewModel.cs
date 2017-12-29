@@ -1,18 +1,18 @@
-﻿namespace PawGuide.Web.Areas.Publications.Models.Articles
+﻿namespace PawGuide.Web.Areas.Publications.Models.Ads
 {
-    using Services;
-    using Services.Publications.Models;
     using System;
     using System.Collections.Generic;
+    using PawGuide.Services;
+    using PawGuide.Services.Publications.Models;
 
-    public class ArticleListingViewModel
+    public class AdListingViewModel
     {
-        public IEnumerable<ArticleListingServiceModel> Articles { get; set; }
+        public IEnumerable<AdListingServiceModel> Ads { get; set; }
 
-        public int TotalArticles { get; set; }
+        public int TotalAds { get; set; }
 
         public int TotalPages =>
-            (int)Math.Ceiling((double)this.TotalArticles / ServiceConstants.PublicationsPageSize);
+            (int)Math.Ceiling((double)this.TotalAds / ServiceConstants.PublicationsPageSize);
 
         public int CurrentPage { get; set; }
 

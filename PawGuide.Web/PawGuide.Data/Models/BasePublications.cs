@@ -10,8 +10,8 @@
         public int Id { get; set; }
 
         [Required]
-        [MinLength(ArticleTitleMinLength)]
-        [MaxLength(ArticleTitleMaxLength)]
+        [MinLength(PublicationTitleMinLength)]
+        [MaxLength(PublicationTitleMaxLength)]
         public string Title { get; set; }
 
         [Required]
