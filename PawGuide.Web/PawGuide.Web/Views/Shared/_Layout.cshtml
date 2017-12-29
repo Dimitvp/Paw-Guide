@@ -51,45 +51,48 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Paw Guide</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="Publications" asp-controller="Articles" asp-action="Index">Articles</a></li>
-                    <li><a asp-area="Business" asp-controller="Businesses" asp-action="Index">Businesses</a></li>
-                    <li><a asp-area="Publications" asp-controller="Ads" asp-action="Index">Ads</a></li>
-
-                    @if (User.IsInRole(WebConstants.AdministratorRole))
-    {
-                <li><a asp-area="Admin" asp-controller="Users" asp-action="Index">Users</a></li>
-}
-
-                    @if (User.IsInRole(WebConstants.ModeratorRole) || User.IsInRole(WebConstants.AdministratorRole))
-    {
-                <li><a asp-area="Business" asp-controller="Businesses" asp-action="ForApproval">Moderator Panel Businesses</a></li>
-                <li><a asp-area="Publications" asp-controller="Ads" asp-action="ForApproval">Moderator Panel Ads</a></li>
-                <li><a asp-area="Publications" asp-controller="Articles" asp-action="Create">Create Article</a></li>
-}
-
-                    @if (User.Identity.IsAuthenticated)
-    {
-                <li><a asp-area="Business" asp-controller="Businesses" asp-action="Create">Add Business</a></li>
-                <li><a asp-area="Publications" asp-controller="Ads" asp-action="Create">Create Ads</a></li>
-}
-                </ul>
-                @await Html.PartialAsync("_LoginPartial")
-            </div>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Paw Guide</a>
         </div>
-    </nav>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a asp-area="Publications" asp-controller="Articles" asp-action="Index">Articles</a></li>
+                <li><a asp-area="Business" asp-controller="Businesses" asp-action="Index">Businesses</a></li>
+                <li><a asp-area="Publications" asp-controller="Ads" asp-action="Index">Ads</a></li>
+
+                @if (User.IsInRole(WebConstants.AdministratorRole))
+                {
+                    <li><a asp-area="Admin" asp-controller="Users" asp-action="Index">Users</a></li>
+                }
+
+                @if (User.IsInRole(WebConstants.ModeratorRole) || User.IsInRole(WebConstants.AdministratorRole))
+                {
+                    <li><a asp-area="Business" asp-controller="Businesses" asp-action="ForApproval">Moderator Panel Businesses</a></li>
+                    <li><a asp-area="Publications" asp-controller="Ads" asp-action="ForApproval">Moderator Panel Ads</a></li>
+                    <li><a asp-area="Publications" asp-controller="Articles" asp-action="Create">Create Article</a></li>
+                }
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li><a asp-area="Business" asp-controller="Businesses" asp-action="Create">Add Business</a></li>
+                    <li><a asp-area="Publications" asp-controller="Ads" asp-action="Create">Create Ads</a></li>
+                }
+            </ul>
+            @await Html.PartialAsync("_LoginPartial")
+        </div>
+    </div>
+</nav>
+<br/>
+<br/>
+<br/>
     <div id="all">
         <header>
 
