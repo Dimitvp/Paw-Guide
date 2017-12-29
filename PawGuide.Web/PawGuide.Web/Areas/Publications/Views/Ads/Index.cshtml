@@ -15,6 +15,10 @@
                         <a asp-action="Details" asp-route-id="@ad.Id" asp-route-title="@ad.Title.ToFriendlyUrl()">@ad.Title</a>
                         <br/>
                         <small>published by @ad.Author on @ad.PublishDate.ToShortDateString()</small>
+                        @if (ad.IsApproved == false)
+                        {
+                            <img src="https://barmakapproved.files.wordpress.com/2012/07/notapproved.png"/>
+                        }
                     </li>
                 }
             }

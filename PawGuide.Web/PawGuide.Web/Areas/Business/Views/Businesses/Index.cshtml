@@ -32,6 +32,11 @@
                             @business.LngLocation
                         </p>
                         <small>published by @business.Author on @business.PublishDate.ToShortDateString()</small>
+                        
+                        @if (business.IsApproved == false)
+                        {
+                            <img src="https://barmakapproved.files.wordpress.com/2012/07/notapproved.png"/>
+                        }
                     </li>
                }             
             }
