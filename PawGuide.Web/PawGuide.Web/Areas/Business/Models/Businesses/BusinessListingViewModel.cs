@@ -2,7 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    using PawGuide.Data.Models;
+    using Data.Models;
     using Services;
     using Services.Businesses.Models;
 

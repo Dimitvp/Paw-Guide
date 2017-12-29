@@ -24,9 +24,9 @@
             <br />
             <a href="@Model.WebPageUrl">@Model.WebPageUrl</a>
         </p>
-        @if (User.Identity.Name.Equals(Model.Author))
+        @if (User.Identity.IsAuthenticated && User.Identity.Name.Equals(Model.Author))
         {
-            <a class="btn btn-sm btn-primary" asp-area="Business" asp-controller="Businesses" asp-action="Edit">Edit</a>
+            <a class="btn btn-sm btn-primary" asp-area="Business" asp-controller="Businesses" asp-action="Edit" asp-route-id="@Model.Id" asp-route-title="@Model.Name.ToFriendlyUrl()">Edit</a>
         }
         <small>published by @Model.Author on @Model.PublishDate.ToShortDateString()</small>
     </li>

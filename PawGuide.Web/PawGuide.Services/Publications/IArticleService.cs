@@ -13,5 +13,13 @@
         Task<ArticleDetailsServiceModel> ById(int id);
 
         Task CreateAsync(string title, string content, string authorId);
+
+        Task<bool> EditAsync(
+            int id,
+            string title,
+            string content,
+            string authorId);
+
+        Task<bool> Exists(int id);
     }
 }

@@ -54,5 +54,29 @@
 
             await this.db.SaveChangesAsync();
         }
+
+        public async Task<bool> EditAsync(
+            int id,
+            string title,
+            string content,
+            string authorId)
+        {
+            var article = await this.db.Articles.FirstOrDefaultAsync(b => b.Id == id);
+
+            if (article == null)
+            {
+                return false;
+            }
+
+            article.Title = title;
+            article.Content = content;
+
+            this.db.SaveChanges();
+
+            return true;
+        }
+
+        public async Task<bool> Exists(int id)
+            => await this.db.Articles.AnyAsync(b => b.Id == id);
     }
 }

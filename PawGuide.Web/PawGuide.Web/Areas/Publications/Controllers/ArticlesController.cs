@@ -10,7 +10,7 @@
     using Services.Publications;
     using Services.Html;
     using System.Threading.Tasks;
-
+    using PawGuide.Services.Publications.Models;
     using static WebConstants;
 
     [Area(PublicationsArea)]
@@ -55,6 +55,39 @@
             var userId = this.userManager.GetUserId(User);
 
             await this.articles.CreateAsync(model.Title, model.Content, userId);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var articleExists = await this.articles.Exists(id);
+
+            if (!articleExists)
+            {
+                return NotFound();
+            }
+
+            return this.ViewOrNotFound(await this.articles.ById(id));
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, ArticleDetailsServiceModel articleModel)
+        {
+            var userId = this.userManager.GetUserId(User);
+
+            var update = await this.articles.EditAsync(
+                id,
+                articleModel.Title,
+                articleModel.Content,
+                userId);
+
+            if (!update == null)
+            {
+                return NotFound();
+            }
 
             return RedirectToAction(nameof(Index));
         }

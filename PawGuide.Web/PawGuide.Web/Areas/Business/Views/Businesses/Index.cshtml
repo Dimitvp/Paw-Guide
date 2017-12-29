@@ -8,8 +8,8 @@
         <ul class="list-group article-list">
             @foreach (var business in Model.Businesses)
             {
-                //if (business.IsApproved == true)
-                //{
+                if (business.IsApproved == true || business.Author == User.Identity.Name)
+                {
                     <li class="list-group-item">
                         <img src="@business.PicUrl" alt="Sample Image" width="300px"/>
                         <a asp-action="Details" asp-route-id="@business.Id" asp-route-title="@business.Name.ToFriendlyUrl()">@business.Name</a>
@@ -33,7 +33,7 @@
                         </p>
                         <small>published by @business.Author on @business.PublishDate.ToShortDateString()</small>
                     </li>
-               // }             
+               }             
             }
         </ul>
     </div>

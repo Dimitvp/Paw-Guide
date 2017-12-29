@@ -7,6 +7,7 @@
     using Data.Models;
     using Infrastructure.Extensions;
     using Infrastructure.Filters;
+    using PawGuide.Services.Businesses.Models;
     using PawGuide.Web.Areas.Business.Models.Businesses;
     using Services.Businesses;
 
@@ -75,12 +76,12 @@
                 return NotFound();
             }
 
-            return View();
+            return this.ViewOrNotFound(await this.businesses.ById(id));
         }
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, PublishBusinessFormModel businessModel)
+        public async Task<IActionResult> Edit(int id, BusinessDetailsServiceModel businessModel)
         {
             var userId = this.userManager.GetUserId(User);
 
@@ -95,6 +96,7 @@
                 businessModel.PetType,
                 businessModel.City,
                 businessModel.PicUrl,
+                businessModel.IsApproved,
                 businessModel.Note,
                 userId);
 
@@ -105,5 +107,13 @@
 
             return RedirectToAction(nameof(Index));
         }
+
+        public async Task<IActionResult> ForApprovel(int page = 1)
+            => View(new BusinessListingViewModel
+            {
+                Businesses = await this.businesses.AllAsync(page),
+                TotalBusinesses = await this.businesses.TotalAsync(),
+                CurrentPage = page
+            });
     }
 }

@@ -1,4 +1,4 @@
-﻿@model BusinessForApproveListingViewModel
+﻿@model BusinessListingViewModel
 
 @{
     ViewData["Title"] = "Businesses for Approvel";
@@ -8,32 +8,32 @@
 
 <table class="table table-bordered table-hover">
     <thead>
-        <tr>
-            <th>
-                Name
-            </th>
-            <th>
-                Type
-            </th>
-            <th>
-            </th>
-        </tr>
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Type
+        </th>
+        <th>
+        </th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var business in Model.Businesses)
+    @foreach (var business in Model.Businesses)
+    {
+        if (business.IsApproved == false)
         {
-            if (business.IsApproved == false)
-            {
-                <tr>
-                    <th>
-                        <a asp-action="Details" asp-route-id="@business.Id" asp-route-title="@business.Name.ToFriendlyUrl()">@business.Name</a>
-                    </th>
-                    <th>
-                        @business.Type
-                    </th>
-                </tr>
-            }
+            <tr>
+                <th>
+                    <a asp-area="Business" asp-controller="Businesses"  asp-action="Edit" asp-route-id="@business.Id" asp-route-title="@business.Name.ToFriendlyUrl()">@business.Name</a>
+                </th>
+                <th>
+                    @business.Type
+                </th>
+            </tr>
         }
+    }
     </tbody>
 </table>
 @if (Model.TotalBusinesses > Model.Businesses.Count())

@@ -38,6 +38,7 @@
             PetType petType,
             string city,
             string picUrl,
+            bool isApproved,
             string note,
             string authorId);
 

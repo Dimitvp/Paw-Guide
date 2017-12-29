@@ -22,6 +22,8 @@
 
         public string PicUrl { get; set; }
 
+        public string Address { get; set; }
+
         public string WebPageUrl { get; set; }
 
         public string Note { get; set; }

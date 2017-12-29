@@ -19,5 +19,6 @@
             => mapper
                 .CreateMap<Article, ArticleListingServiceModel>()
                 .ForMember(a => a.Author, cfg => cfg.MapFrom(a => a.Author.UserName));
+
     }
 }

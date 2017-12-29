@@ -7,8 +7,8 @@
 <h4><em>published by @Model.Author on @Model.PublishDate.ToShortDateString()</em></h4>
 <div>
     @Html.Raw(Model.Content)
-    @if (User.IsInRole(WebConstants.ArticleAuthorRole))
+    @if (User.IsInRole(WebConstants.ModeratorRole) || User.IsInRole(WebConstants.AdministratorRole))
     {
-        <button type="submit" class="btn btn-default">Edit</button>
+    <a class="btn btn-sm btn-primary" asp-area="Publications" asp-controller="Articles" asp-action="Edit" asp-route-id="@Model.Id" asp-route-title="@Model.Title.ToFriendlyUrl()">Edit</a>
     }
 </div>

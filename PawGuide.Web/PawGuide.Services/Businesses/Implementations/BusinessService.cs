@@ -86,7 +86,8 @@
             double lngLocation, 
             PetType petType, 
             string city, 
-            string picUrl, 
+            string picUrl,
+            bool isApproved,
             string note, 
             string authorId)
         {
@@ -106,7 +107,7 @@
             business.PetType = petType;
             business.City = city;
             business.PicUrl = picUrl;
-            business.IsApproved = false;
+            business.IsApproved = isApproved;
             business.Note = note;
 
             this.db.SaveChanges();
