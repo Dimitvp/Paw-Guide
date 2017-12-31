@@ -6,12 +6,12 @@ $(function () {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function initMap(data) {
-            var location = new google.maps.LatLng(42.6995888816592, 23.334236743566);
+            var location = new google.maps.LatLng(42.76314587, 25.14770508);
 
             var mapCanvas = document.getElementById('map');
             var mapOptions = {
                 center: location,
-                zoom: 7,
+                zoom: 8,
                 panControl: true,
                 scrollwheel: true,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -19,15 +19,6 @@ $(function () {
             var map = new google.maps.Map(mapCanvas, mapOptions);
 
             var markerImage = '/img/pawMarker.png';
-
-            //var markers = data.map(function (location) {
-            //        return new google.maps.Marker({
-            //            position: location
-            //    });
-            //});
-
-            //var markerCluster = new MarkerClusterer(map, markers,
-            //    { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
 
             var marker, latLocation, lngLocation, city, id, name, petType, type, picUrl;
 
@@ -109,8 +100,7 @@ $(function () {
                         }
                     })(marker, business));
                 });
-
-
+           
             var styles = [
                 {
                     "featureType": "landscape",
@@ -234,7 +224,11 @@ $(function () {
 
             //google.maps.event.addDomListener(window, 'load', initMap);
 
+            //var markerCluster = new MarkerClusterer(map, marker,
+            //    { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+
         }, //End of AJAX Success function  
+
 
         failure: function (data) {
             alert(data.responseText);
