@@ -1,5 +1,6 @@
 ﻿namespace PawGuide.Web.Areas.Business.Controllers
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
@@ -107,6 +108,12 @@
 
             return RedirectToAction(nameof(Index));
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> AllLocations()
+            => this.Ok(await this.businesses.AllLocations());
+
 
         public async Task<IActionResult> ForApproval(int page = 1)
             => View(new BusinessListingViewModel

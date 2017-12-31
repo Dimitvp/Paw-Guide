@@ -13,6 +13,8 @@
 
         Task<BusinessDetailsServiceModel> ById(int id);
 
+        Task<IEnumerable<BusinessLocationsServicModel>> AllLocations();
+
         Task CreateAsync(
             string name,
             TypeBusiness type,

@@ -33,6 +33,13 @@
         public async Task<int> TotalAsync()
             => await this.db.Businesses.CountAsync();
 
+        public async  Task<IEnumerable<BusinessLocationsServicModel>> AllLocations()
+            => await this.db
+                .Businesses
+                .Where(b => b.IsApproved == true)
+                .ProjectTo<BusinessLocationsServicModel>()
+                .ToListAsync();
+
         public async Task<BusinessDetailsServiceModel> ById(int id)
             => await this.db
                 .Businesses
