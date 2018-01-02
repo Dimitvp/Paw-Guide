@@ -92,6 +92,7 @@
             int id,
             string title,
             string content,
+            string picUrl,
             string authorId)
         {
             var article = await this.db.Articles.FirstOrDefaultAsync(b => b.Id == id);
@@ -103,7 +104,7 @@
 
             article.Title = title;
             article.Content = content;
-
+            article.PicUrl = picUrl;
             this.db.SaveChanges();
 
             return true;

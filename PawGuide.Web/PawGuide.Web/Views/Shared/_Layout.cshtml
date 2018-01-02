@@ -6,7 +6,7 @@
     <title>@ViewData["Title"] - Paw Guide</title>
 
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />*@
         @*<link rel="stylesheet" href="~/css/site.css" />*@
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
 
@@ -15,13 +15,13 @@
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
         <!-- Css animations  -->
-        <link href="css/animate.css" rel="stylesheet">
+        <link href="~/css/animate.css" rel="stylesheet">
 
         <!-- Theme stylesheet, if possible do not edit this stylesheet -->
-        <link href="css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+        <link href="~/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
 
         <!-- Custom stylesheet - for your changes -->
-        <link href="css/custom.css" rel="stylesheet">
+        <link href="~/css/custom.css" rel="stylesheet">
 
         <!-- Responsivity for older IE -->
         <!--[if lt IE 9]>
@@ -29,7 +29,7 @@
             <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <!-- Favicon and apple touch icons-->
-        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="~/img/favicon.ico" type="image/x-icon" />
         <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
         <link rel="apple-touch-icon" sizes="57x57" href="img/apple-touch-icon-57x57.png" />
         <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png" />
@@ -40,8 +40,8 @@
         <link rel="apple-touch-icon" sizes="152x152" href="img/apple-touch-icon-152x152.png" />
         <!-- owl carousel css -->
 
-        <link href="css/owl.carousel.css" rel="stylesheet">
-        <link href="css/owl.theme.css" rel="stylesheet">
+        <link href="~/css/owl.carousel.css" rel="stylesheet">
+        <link href="~/css/owl.theme.css" rel="stylesheet">
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -51,48 +51,48 @@
     </environment>
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Paw Guide</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a asp-area="Publications" asp-controller="Articles" asp-action="Index">Articles</a></li>
-                <li><a asp-area="Business" asp-controller="Businesses" asp-action="Index">Businesses</a></li>
-                <li><a asp-area="Publications" asp-controller="Ads" asp-action="Index">Ads</a></li>
+    @*<nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Paw Guide</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a asp-area="Publications" asp-controller="Articles" asp-action="Index">Articles</a></li>
+                        <li><a asp-area="Business" asp-controller="Businesses" asp-action="Index">Businesses</a></li>
+                        <li><a asp-area="Publications" asp-controller="Ads" asp-action="Index">Ads</a></li>
 
-                @if (User.IsInRole(WebConstants.AdministratorRole))
-                {
-                    <li><a asp-area="Admin" asp-controller="Users" asp-action="Index">Users</a></li>
-                }
+                        @if (User.IsInRole(WebConstants.AdministratorRole))
+                        {
+                            <li><a asp-area="Admin" asp-controller="Users" asp-action="Index">Users</a></li>
+                        }
 
-                @if (User.IsInRole(WebConstants.ModeratorRole) || User.IsInRole(WebConstants.AdministratorRole))
-                {
-                    <li><a asp-area="Business" asp-controller="Businesses" asp-action="ForApproval">Moderator Panel Businesses</a></li>
-                    <li><a asp-area="Publications" asp-controller="Ads" asp-action="ForApproval">Moderator Panel Ads</a></li>
-                    <li><a asp-area="Publications" asp-controller="Articles" asp-action="Create">Create Article</a></li>
-                }
+                        @if (User.IsInRole(WebConstants.ModeratorRole) || User.IsInRole(WebConstants.AdministratorRole))
+                        {
+                            <li><a asp-area="Business" asp-controller="Businesses" asp-action="ForApproval">Moderator Panel Businesses</a></li>
+                            <li><a asp-area="Publications" asp-controller="Ads" asp-action="ForApproval">Moderator Panel Ads</a></li>
+                            <li><a asp-area="Publications" asp-controller="Articles" asp-action="Create">Create Article</a></li>
+                        }
 
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <li><a asp-area="Business" asp-controller="Businesses" asp-action="Create">Add Business</a></li>
-                    <li><a asp-area="Publications" asp-controller="Ads" asp-action="Create">Create Ads</a></li>
-                }
-            </ul>
-            @await Html.PartialAsync("_LoginPartial")
-        </div>
-    </div>
-</nav>
-<br/>
-<br/>
-<br/>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li><a asp-area="Business" asp-controller="Businesses" asp-action="Create">Add Business</a></li>
+                            <li><a asp-area="Publications" asp-controller="Ads" asp-action="Create">Create Ads</a></li>
+                        }
+                    </ul>
+                    @await Html.PartialAsync("_LoginPartial")
+                </div>
+            </div>
+        </nav>
+        <br />
+        <br />
+        <br />*@
     <div id="all">
         <header>
 
@@ -102,7 +102,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-5 contact">
-                            <p class="hidden-sm hidden-xs">Contact us on +420 777 555 333 or hello@universal.com.</p>
+                            <p class="hidden-sm hidden-xs">Contact us on +359 888 888 888 or contact@pawguide.net.</p>
                             <p class="hidden-md hidden-lg">
                                 <a href="#" data-animate-hover="pulse"><i class="fa fa-phone"></i></a>  <a href="#" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
                             </p>
@@ -116,11 +116,8 @@
                             </div>
 
                             <div class="login">
-                                <a href="#" data-toggle="modal" data-target="#login-modal"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Sign in</span></a>
-                                @*<a href="customer-register.html"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Sign up</span></a>*@
-                                <a asp-area="" asp-controller="Account" asp-action="Register"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Sign up</span></a>
+                                @await Html.PartialAsync("_LoginPartial")
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -137,9 +134,9 @@
                     <div class="container">
                         <div class="navbar-header">
 
-                            <a class="navbar-brand home" href="index.html">
-                                <img src="img/logo.png" alt="Universal logo" class="hidden-xs hidden-sm">
-                                <img src="img/logo-small.png" alt="Universal logo" class="visible-xs visible-sm"><span class="sr-only">Universal - go to homepage</span>
+                            <a class="navbar-brand home" asp-area="" asp-controller="Home" asp-action="Index">
+                                <img src="~/img/logo.png" alt="Universal logo" class="hidden-xs hidden-sm">
+                                <img src="~/img/logo-small.png" alt="Universal logo" class="visible-xs visible-sm"><span class="sr-only">Universal - go to homepage</span>
                             </a>
                             <div class="navbar-buttons">
                                 <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -154,10 +151,10 @@
 
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="dropdown active">
-                                    <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
+                                    <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">Businesses <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a href="index.html">Option 1: Default Page</a>
+                                            <a asp-area="Business" asp-controller="Businesses" asp-action="Index">All Businesses</a>
                                         </li>
                                         <li>
                                             <a href="index2.html">Option 2: Application</a>
@@ -174,19 +171,19 @@
                                     </ul>
                                 </li>
                                 <li class="dropdown use-yamm yamm-fw">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features<b class="caret"></b></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Articles<b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li>
                                             <div class="yamm-content">
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <img src="img/template-easy-customize.png" class="img-responsive hidden-xs" alt="">
+                                                        <img src="~/img/template-easy-customize.png" class="img-responsive hidden-xs" alt="">
                                                     </div>
                                                     <div class="col-sm-3">
                                                         <h5>Shortcodes</h5>
                                                         <ul>
                                                             <li>
-                                                                <a href="template-accordions.html">Accordions</a>
+                                                                <a asp-area="Publications" asp-controller="Articles" asp-action="Index">Articles</a>
                                                             </li>
                                                             <li>
                                                                 <a href="template-alerts.html">Alerts</a>
@@ -231,19 +228,19 @@
                                     </ul>
                                 </li>
                                 <li class="dropdown use-yamm yamm-fw">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ads <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li>
                                             <div class="yamm-content">
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <img src="img/template-homepage.png" class="img-responsive hidden-xs" alt="">
+                                                        <img src="~/img/template-homepage.png" class="img-responsive hidden-xs" alt="">
                                                     </div>
                                                     <div class="col-sm-3">
                                                         <h5>Portfolio</h5>
                                                         <ul>
                                                             <li>
-                                                                <a href="portfolio-2.html">2 columns</a>
+                                                                <a asp-area="Publications" asp-controller="Ads" asp-action="Index">Ads</a>
                                                             </li>
                                                             <li>
                                                                 <a href="portfolio-no-space-2.html">2 columns with negative space</a>
@@ -297,7 +294,7 @@
                                     </ul>
                                 </li>
                                 <!-- ========== FULL WIDTH MEGAMENU ================== -->
-                                <li class="dropdown use-yamm yamm-fw">
+                                @*<li class="dropdown use-yamm yamm-fw">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">All Pages <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li>
@@ -474,34 +471,49 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <!-- /.yamm-content -->
-                                        </li>
-                                    </ul>
-                                </li>
+                                            </div>*@
+                                <!-- /.yamm-content -->
+                                @*</li>
+                                        </ul>
+                                    </li>*@
                                 <!-- ========== FULL WIDTH MEGAMENU END ================== -->
+                                @if (User.IsInRole(WebConstants.AdministratorRole) || User.IsInRole(WebConstants.ModeratorRole))
+                                {
+                                    <li class="dropdown">
+                                        <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">Moderator Panel <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
 
-                                <li class="dropdown">
-                                    <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">Contact <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="contact.html">Contact option 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="contact2.html">Contact option 2</a>
-                                        </li>
-                                        <li>
-                                            <a href="contact3.html">Contact option 3</a>
-                                        </li>
+                                            @if (User.IsInRole(WebConstants.AdministratorRole))
+                                            {
+                                                <li>
+                                                    <a asp-area="Admin" asp-controller="Users" asp-action="Index">Users</a>
+                                                </li>
+                                            }
+                                            <li><a asp-area="Business" asp-controller="Businesses" asp-action="ForApproval">Moderat Businesses</a></li>
+                                            <li><a asp-area="Publications" asp-controller="Ads" asp-action="ForApproval">Moderat Ads</a></li>
+                                            <li><a asp-area="Publications" asp-controller="Articles" asp-action="Create">Create Article</a></li>
+                                        </ul>
+                                    </li>
+                                }
 
-                                    </ul>
-                                </li>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <li class="dropdown">
+                                        <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">Create <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a asp-area="Business" asp-controller="Businesses" asp-action="Create">Add Business</a>
+                                            </li>
+                                            <li>
+                                                <a asp-area="Publications" asp-controller="Ads" asp-action="Create">Create Ads</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                }
                             </ul>
 
                         </div>
                         <!--/.nav-collapse -->
-
-
 
                         <div class="collapse clearfix" id="search">
 
@@ -521,7 +533,6 @@
 
                     </div>
 
-
                 </div>
                 <!-- /#navbar -->
 
@@ -531,37 +542,41 @@
         </header>
         <!-- *** LOGIN MODAL ***
         _________________________________________________________ -->
+        @*<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+                <div class="modal-dialog modal-md">
 
-        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
-            <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            @*<h4 class="modal-title" id="Login">Customer login</h4>
+                        </div>
+                        <div class="modal-body">
 
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="Login">Customer login</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form action="customer-orders.html" method="post">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="email_modal" placeholder="email">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" id="password_modal" placeholder="password">
-                            </div>
+                            @await Html.PartialAsync("~/Views/Account/_LoginFormPartial.cshtml")
 
-                            <p class="text-center">
-                                <button asp-area="" asp-controller="Account" asp-action="Login" class="btn btn-template-main"><i class="fa fa-sign-in"></i> Log in</button>
-                            </p>
+                            <form asp-route-returnurl="@ViewData["ReturnUrl"] method="post">
+                                    <div asp-validation-summary="All" class="text-danger"></div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="email_modal" placeholder="email">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" id="password_modal" placeholder="password">
+                                    </div>
 
-                        </form>
+                                    <p class="text-center">
+                                        <button type="submit" class="btn btn-template-main"><i class="fa fa-sign-in"></i> Log in</button>
+                                    </p>
 
-                        <p class="text-center text-muted">Not registered yet?</p>
-                        <p class="text-center text-muted"><a href="customer-register.html"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
+                                </form>
 
+                                <p class="text-center text-muted">Not registered yet?</p>
+                                <p class="text-center text-muted"><a href="customer-register.html"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!
+                                </p>
+
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div>*@
 
         <!-- *** LOGIN MODAL END *** -->
         @*<div class="container body-content">*@
@@ -570,62 +585,72 @@
         <footer class="text-center">
             <p>&copy; 2017 - Paw Guide</p>
         </footer>
-        @*</div>*@
-
-        <environment include="Development">
-            <!-- #### JAVASCRIPT FILES ### -->
-
-            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-            <script>
-                window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')
-            </script>
-            <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-            <script src="js/jquery.cookie.js"></script>
-            <script src="js/waypoints.min.js"></script>
-            <script src="js/jquery.counterup.min.js"></script>
-            <script src="js/jquery.parallax-1.1.3.js"></script>
-            <script src="js/front.js"></script>
-
-            <!-- owl carousel -->
-            <script src="js/owl.carousel.min.js"></script>
-            @*<script src="~/lib/jquery/dist/jquery.js"></script>*@
-            @*<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-                <script src="~/js/site.js" asp-append-version="true"></script>*@
-        </environment>
-        <environment exclude="Development">
-            <!-- #### JAVASCRIPT FILES ### -->
-
-            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-            <script>
-                window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')
-            </script>
-            <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-            <script src="js/jquery.cookie.js"></script>
-            <script src="js/waypoints.min.js"></script>
-            <script src="js/jquery.counterup.min.js"></script>
-            <script src="js/jquery.parallax-1.1.3.js"></script>
-            <script src="js/front.js"></script>
-
-            <!-- owl carousel -->
-            <script src="js/owl.carousel.min.js"></script>
-            @*<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                        asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                        asp-fallback-test="window.jQuery"
-                        crossorigin="anonymous"
-                        integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
-                </script>
-                <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-                        asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                        asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                        crossorigin="anonymous"
-                        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-                </script>
-                <script src="~/js/site.min.js" asp-append-version="true"></script>*@
-        </environment>
     </div>
     <!-- /#all -->
+    @*</div>*@
+    <environment include="Development">
+        <!-- #### JAVASCRIPT FILES ### -->
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script>
+            window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')
+        </script>
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+        @*<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>*@
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQEunotseid5JornLh-91GdsqxUXeF8B0"></script>
+
+        <script type="text/javascript" src="~/js/custom.js"></script>
+        <script src="~/js/jquery.cookie.js"></script>
+        <script src="~/js/waypoints.min.js"></script>
+        <script src="~/js/jquery.counterup.min.js"></script>
+        <script src="~/js/jquery.parallax-1.1.3.js"></script>
+        <script src="~/js/front.js"></script>
+        <script src="~/js/owl.carousel.min.js"></script>
+
+        @*<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>*@
+        @*<script src="~/lib/jquery/dist/jquery.js"></script>*@
+        @*<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+            <script src="~/js/site.js" asp-append-version="true"></script>*@
+    </environment>
+    <environment exclude="Development">
+        <!-- #### JAVASCRIPT FILES ### -->
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script>
+            window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')
+        </script>
+
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQEunotseid5JornLh-91GdsqxUXeF8B0"></script>
+
+        <script type="text/javascript" src="~/js/custom.js"></script>
+        <script src="~/js/jquery.cookie.js"></script>
+        <script src="~/js/waypoints.min.js"></script>
+        <script src="~/js/jquery.counterup.min.js"></script>
+        <script src="~/js/jquery.parallax-1.1.3.js"></script>
+        <script src="~/js/front.js"></script>
+        <script src="~/js/owl.carousel.min.js"></script>
+
+        @*<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>*@
+        @*<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>*@
+        @*<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                    asp-fallback-test="window.jQuery"
+                    crossorigin="anonymous"
+                    integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+            </script>
+            <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                    crossorigin="anonymous"
+                    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+            </script>
+            <script src="~/js/site.min.js" asp-append-version="true"></script>*@
+    </environment>
 
     @RenderSection("Scripts", required: false)
 </body>

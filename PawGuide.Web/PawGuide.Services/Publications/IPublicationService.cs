@@ -24,6 +24,7 @@
             int id,
             string title,
             string content,
+            string picUrl,
             string authorId);
 
         Task<bool> EditAsync(

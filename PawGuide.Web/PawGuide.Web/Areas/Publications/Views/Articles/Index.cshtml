@@ -1,44 +1,92 @@
 ﻿@model ArticleListingViewModel
-
 @{
-    ViewData["Title"] = "Articles";
+    ViewData["Title"] = "Helpful Articles";
 }
-
-<h2>@ViewData["Title"]</h2>
-
-<div class="row">
-    <div class="col-md-6">
-        <ul class="list-group article-list">
-            @foreach (var article in Model.Articles)
-            {
-                <li class="list-group-item">
-                    <a asp-action="Details" asp-route-id="@article.Id" asp-route-title="@article.Title.ToFriendlyUrl()">@article.Title</a>
-                    <br />
-                    <small>published by @article.Author on @article.PublishDate.ToShortDateString()</small>
-                </li>
-            }
-        </ul>
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>@ViewData["Title"]</h1>
+            </div>
+            <div class="col-md-5">
+                <ul class="breadcrumb">
+                    <li>
+                        <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li>@ViewData["Title"]</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 
-@if (Model.TotalArticles > Model.Articles.Count())
-{
-    <ul class="pagination">
-        <li class="@(Model.CurrentPage == 1 ? "disabled" : string.Empty)">
-            <a
-                asp-route-page="@Model.PreviousPage"
-                aria-label="Previous"
-            >
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        <li class="@(Model.CurrentPage == Model.TotalPages ? "disabled" : string.Empty)">
-            <a 
-                asp-route-page="@Model.NextPage"
-                aria-label="Next"
-            >
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-    </ul>
-}
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <!-- *** LEFT COLUMN ***
+            _________________________________________________________ -->
+
+            <div class="col-md-9" id="blog-listing-medium">
+                @foreach (var article in Model.Articles)
+                {
+                    <section class="post">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="image">
+                                    <a asp-action="Details" asp-route-id="@article.Id" asp-route-title="@article.Title.ToFriendlyUrl()">
+                                        <img src="@article.PicUrl" class="img-responsive" alt="Example blog post alt">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <h2>
+                                    <a asp-action="Details" asp-route-id="@article.Id" asp-route-title="@article.Title.ToFriendlyUrl()">
+                                        @article.Title
+                                    </a>
+                                </h2>
+                                <div class="clearfix">
+                                    <p class="author-category">
+                                        By @article.Author
+                                    </p>
+                                    <p class="date-comments">
+                                        <a href="blog-post.html"><i class="fa fa-calendar-o"></i>@article.PublishDate.ToShortDateString()</a>
+                                        <a href="blog-post.html"><i class="fa fa-comment-o"></i> 8 Comments</a>
+                                    </p>
+                                </div>
+                                <p class="intro">
+                                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.
+                                    Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+                                </p>
+                                <p class="read-more">
+                                    <a asp-action="Details" asp-route-id="@article.Id" asp-route-title="@article.Title.ToFriendlyUrl()" class="btn btn-template-main">Continue reading</a>
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                }
+
+                @if (Model.TotalArticles > Model.Articles.Count())
+                {
+                    <ul class="pager">
+                        <li class="@(Model.CurrentPage == 1 ? "disabled" : string.Empty)">
+                            <a asp-route-page="@Model.PreviousPage" aria-label="Previous">
+                                <span aria-hidden="true">
+                                    &larr; Older
+                                </span>
+                            </a>
+                        </li>
+                        <li class="@(Model.CurrentPage == Model.TotalPages ? "disabled" : string.Empty)">
+                            <a asp-route-page="@Model.NextPage" aria-label="Next">
+                                <span aria-hidden="true">
+                                    Newer &rarr;
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                }
+            </div>
+            
+            <!-- *** LEFT COLUMN END *** -->
+        </div>
+    </div>
+</div>

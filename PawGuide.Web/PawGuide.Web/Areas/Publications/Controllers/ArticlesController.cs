@@ -83,6 +83,7 @@
                 id,
                 articleModel.Title,
                 articleModel.Content,
+                articleModel.PicUrl,
                 userId);
 
             if (!update == null)

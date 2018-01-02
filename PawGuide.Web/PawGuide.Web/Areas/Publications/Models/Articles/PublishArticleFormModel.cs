@@ -13,5 +13,7 @@
 
         [Required]
         public string Content { get; set; }
+
+        public string PicUrl { get; set; }
     }
 }

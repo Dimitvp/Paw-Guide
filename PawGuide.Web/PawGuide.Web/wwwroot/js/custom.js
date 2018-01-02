@@ -77,7 +77,7 @@ $(function () {
                             petType = 'No such an Animal!';
                     };
                     var contentString = '<div class="info-window text-center">' +
-                        '<h1>' + name + '</h1>' +
+                        '<h1><a href="http://localhost:9288/business/businesses/Details/'+ id +'">' + name + '</a></h1>' +
                         '<img class="img-fluid" style="max-width: 100%; height: auto;" src="' + picUrl + '"/>'+
                         '<h3>' + city + '</h3>' +
                         '<div class="info-content">' +
@@ -230,11 +230,11 @@ $(function () {
         }, //End of AJAX Success function  
 
 
-        failure: function (data) {
-            alert(data.responseText);
-        }, //End of AJAX failure function  
-        error: function (data) {
-            alert(data.responseText);
-        } //End of AJAX error function  
+        //failure: function (data) {
+        //    alert(data.responseText);
+        //}, //End of AJAX failure function  
+        //error: function (data) {
+        //    alert(data.responseText);
+        //} //End of AJAX error function  
     });
 });

@@ -4,10 +4,13 @@
     ViewData["Title"] = "Ads for Approvel";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1 class="text-center">@ViewData["Title"]</h1>
 
-<table class="table table-bordered table-hover">
-    <thead>
+<div class="row text-center">
+<div class="col-md-2"></div>
+<div class="col-md-8">
+    <table class="table table-bordered table-hover">
+        <thead>
         <tr>
             <th>
                 Title
@@ -15,11 +18,9 @@
             <th>
                 Pic
             </th>
-            <th>
-            </th>
         </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <tbody>
         @foreach (var ad in Model.Ads)
         {
             if (ad.IsApproved == false)
@@ -29,13 +30,16 @@
                         <a asp-area="Publications" asp-controller="Ads" asp-action="Edit" asp-route-id="@ad.Id" asp-route-title="@ad.Title.ToFriendlyUrl()">@ad.Title</a>
                     </th>
                     <th>
-                       <img src="@ad.PicUrl"/> 
+                        <div class="col-md-2 image">
+                            <img src="@ad.PicUrl" class="img-responsive" alt="@ad.Title"/>
+                        </div>
                     </th>
                 </tr>
             }
         }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+
 @if (Model.TotalAds > Model.Ads.Count())
 {
     <ul class="pagination">
@@ -53,3 +57,7 @@
         </li>
     </ul>
 }
+
+    </div>
+    <div class="col-md-2"></div>
+</div>

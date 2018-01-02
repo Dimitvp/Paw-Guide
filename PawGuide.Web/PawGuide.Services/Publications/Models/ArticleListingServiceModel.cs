@@ -11,6 +11,8 @@
 
         public string Title { get; set; }
 
+        public string PicUrl { get; set; }
+
         public DateTime PublishDate { get; set; }
 
         public string Author { get; set; }

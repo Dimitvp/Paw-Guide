@@ -17,6 +17,10 @@
         [Required]
         public string Content { get; set; }
 
+        [MinLength(PicUrlMinLength)]
+        [MaxLength(PicUrlMaxLength)]
+        public string PicUrl { get; set; }
+
         public DateTime PublishDate { get; set; }
 
         public string AuthorId { get; set; }

@@ -4,52 +4,58 @@
     ViewData["Title"] = "Businesses for Approvel";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1 class="text-center">@ViewData["Title"]</h1>
 
-<table class="table table-bordered table-hover">
-    <thead>
-    <tr>
-        <th>
-            Name
-        </th>
-        <th>
-            Type
-        </th>
-        <th>
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var business in Model.Businesses)
-    {
-        if (business.IsApproved == false)
-        {
+<div class="row text-center">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <table class="table table-bordered table-hover">
+            <thead>
             <tr>
                 <th>
-                    <a asp-area="Business" asp-controller="Businesses"  asp-action="Edit" asp-route-id="@business.Id" asp-route-title="@business.Name.ToFriendlyUrl()">@business.Name</a>
+                    Name
                 </th>
                 <th>
-                    @business.Type
+                    Type
                 </th>
             </tr>
+            </thead>
+            <tbody>
+            @foreach (var business in Model.Businesses)
+            {
+                if (business.IsApproved == false)
+                {
+                    <tr>
+                        <th>
+                            <a asp-area="Business" asp-controller="Businesses" asp-action="Edit" asp-route-id="@business.Id" asp-route-title="@business.Name.ToFriendlyUrl()">@business.Name</a>
+                        </th>
+                        <th>
+                            @business.Type
+                        </th>
+                    </tr>
+                }
+            }
+            </tbody>
+        </table>
+
+        @if (Model.TotalBusinesses > Model.Businesses.Count())
+        {
+            <ul class="pagination">
+                <li class="@(Model.CurrentPage == 1 ? "disabled" : string.Empty)">
+                    <a asp-route-page="@Model.PreviousPage"
+                       aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="@(Model.CurrentPage == Model.TotalPages ? "disabled" : string.Empty)">
+                    <a asp-route-page="@Model.NextPage"
+                       aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
         }
-    }
-    </tbody>
-</table>
-@if (Model.TotalBusinesses > Model.Businesses.Count())
-{
-    <ul class="pagination">
-        <li class="@(Model.CurrentPage == 1 ? "disabled" : string.Empty)">
-            <a asp-route-page="@Model.PreviousPage"
-               aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        <li class="@(Model.CurrentPage == Model.TotalPages ? "disabled" : string.Empty)">
-            <a asp-route-page="@Model.NextPage"
-               aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-    </ul>
-}
+
+    </div>
+    <div class="col-md-2"></div>
+</div>
