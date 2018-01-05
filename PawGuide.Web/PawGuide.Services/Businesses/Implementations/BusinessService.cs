@@ -7,6 +7,7 @@
     using AutoMapper.QueryableExtensions;
     using Data;
     using Data.Models;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using Services.Businesses.Models;
 
@@ -15,15 +16,27 @@
     public class BusinessService : IBusinessService
     {
         private readonly PawGuideDbContext db;
+        private readonly UserManager<User> userManager;
 
-        public BusinessService(PawGuideDbContext db)
+        public BusinessService(PawGuideDbContext db, UserManager<User> userManager)
         {
             this.db = db;
+            this.userManager = userManager;
         }
 
         public async Task<IEnumerable<BusinessListingServiceModel>> AllAsync(int page = 1)
             => await this.db
                 .Businesses
+                .OrderByDescending(b => b.PublishDate)
+                .Skip((page - 1) * BusinessesPageSize)
+                .Take(BusinessesPageSize)
+                .ProjectTo<BusinessListingServiceModel>()
+                .ToListAsync();
+
+        public async Task<IEnumerable<BusinessListingServiceModel>> BusinessTypeAsync(int type, int page = 1)
+            => await this.db
+                .Businesses
+                .Where(b => b.Type.GetHashCode() == type)
                 .OrderByDescending(b => b.PublishDate)
                 .Skip((page - 1) * BusinessesPageSize)
                 .Take(BusinessesPageSize)
@@ -47,14 +60,22 @@
                 .ProjectTo<BusinessDetailsServiceModel>()
                 .FirstOrDefaultAsync();
 
-        public async Task CreateAsync(
+        public async Task SetImage(int id, string image)
+        {
+            var business = await this.db.Businesses.FindAsync(id);
+            business.Image = image;
+
+            this.db.SaveChanges();
+        }
+
+        public async Task<int> CreateAsync(
             string name,
             TypeBusiness type,
             string webPageUrl,
             string address,
             double latLocation,
             double lngLocation,
-            PetType petType,
+            IEnumerable<PetType> petTypes,
             string city,
             string picUrl,
             bool isApproved,
@@ -69,7 +90,7 @@
                 Address = address,
                 LatLocation = latLocation,
                 LngLocation = lngLocation,
-                PetType = petType,
+                PetType = (PetType)petTypes.Cast<int>().Sum(),
                 City = city,
                 PicUrl = picUrl,
                 IsApproved = isApproved,
@@ -81,6 +102,8 @@
             this.db.Add(business);
 
             await this.db.SaveChangesAsync();
+
+            return business.Id;
         }
 
         public async Task<bool> EditAsync(
@@ -90,8 +113,8 @@
             string webPageUrl, 
             string address, 
             double latLocation,
-            double lngLocation, 
-            PetType petType, 
+            double lngLocation,
+            IEnumerable<PetType> petTypes, 
             string city, 
             string picUrl,
             bool isApproved,
@@ -111,7 +134,7 @@
             business.Address = address;
             business.LatLocation = latLocation;
             business.LngLocation = lngLocation;
-            business.PetType = petType;
+            business.PetType = (PetType)petTypes.Cast<int>().Sum();
             business.City = city;
             business.PicUrl = picUrl;
             business.IsApproved = isApproved;
@@ -124,5 +147,27 @@
 
         public async Task<bool> Exists(int id)
             => await this.db.Businesses.AnyAsync(b => b.Id == id);
+
+        public async Task DeleteAsync(int id, string userId, User user)
+        {
+            var business = await this.db.Businesses
+                .Where(b => b.Id == id)
+                .FirstOrDefaultAsync();
+
+            var userRole = await this.userManager.IsInRoleAsync(user, "Administrator");
+
+            if (business.AuthorId != userId && !userRole)
+            {
+                return;
+            }
+
+            if (business == null)
+            {
+                return;
+            }
+
+            this.db.Businesses.Remove(business);
+            this.db.SaveChanges();
+        }
     }
 }

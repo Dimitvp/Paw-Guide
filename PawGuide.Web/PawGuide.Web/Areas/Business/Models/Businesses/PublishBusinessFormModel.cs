@@ -1,11 +1,15 @@
 ﻿namespace PawGuide.Web.Areas.Business.Models.Businesses
 {
-    using System.ComponentModel.DataAnnotations;
     using Data.Models;
+    using Common.Mapping;
+    using Services.Businesses.Models;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using Microsoft.AspNetCore.Http;
 
     using static Data.DataConstants;
 
-    public class PublishBusinessFormModel
+    public class PublishBusinessFormModel : IMapFrom<BusinessDetailsServiceModel>
     {
         [Required]
         [MinLength(UserNameMinLength)]
@@ -33,8 +37,11 @@
 
         public double LngLocation { get; set; }
 
-        [Required]
-        public PetType PetType { get; set; }
+        public bool IsApproved { get; set; }
+
+        public IEnumerable<PetType> PetTypes { get; set; }
+
+        public IFormFile Image { get; set; }
 
         public string Note { get; set; }
 

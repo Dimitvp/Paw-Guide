@@ -1,5 +1,11 @@
 $(function () {
 
+    //$(function () {
+    //    $("#SelectedVendor").on("change", function (){
+    //        $("#SelectedvendorText").val($(this).text());
+    //    });
+    //});
+
     $.ajax({
         type: "GET",
         url: "business/businesses/AllLocations",
@@ -61,20 +67,21 @@ $(function () {
                             type = 'No such a type of business!';
                     };
                     switch (petType) {
-                        case 0:
+                        case 1:
                             petType = 'Small Breed Dog';
                             break;
-                        case 1:
+                        case 2:
                             petType = 'All Dogs';
                             break;
-                        case 2:
+                        case 4:
                             petType = 'Cats';
                             break;
-                        case 3:
+                        case 8:
                             petType = 'Other Type';
                             break;
+                            //TODO
                         default:
-                            petType = 'No such an Animal!';
+                            petType = 'Different kinds of Animal!';
                     };
                     var contentString = '<div class="info-window text-center">' +
                         '<h1><a href="http://localhost:9288/business/businesses/Details/'+ id +'">' + name + '</a></h1>' +

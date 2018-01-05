@@ -6,6 +6,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using Models;
     using Models.Articles;
     using Services.Publications;
     using Services.Html;
@@ -37,7 +38,7 @@
             => View(new ArticleListingViewModel
             {
                 Articles = await this.publications.AllArticlesAsync(page),
-                TotalArticles = await this.publications.TotalAsync(),
+                TotalPublications = await this.publications.TotalAsync(),
                 CurrentPage = page
             });
 
@@ -49,7 +50,7 @@
 
         [HttpPost]
         [ValidateModelState]
-        public async Task<IActionResult> Create(PublishArticleFormModel model)
+        public async Task<IActionResult> Create(PublicationsFormModel model)
         {
             model.Content = this.html.Sanitize(model.Content);
 

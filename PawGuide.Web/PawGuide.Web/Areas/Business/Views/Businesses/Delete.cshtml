@@ -1,0 +1,77 @@
+﻿@using PawGuide.Web
+@model PublishBusinessFormModel
+
+@{
+    ViewData["Title"] = "Delete Business";
+}
+
+@await Html.PartialAsync("_HeadingPartial")
+
+<div class="row text-center">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <form method="post">
+            <h3>@ViewData["Title"]</h3>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" disabled />
+            </div>
+            <div class="form-group">
+                <label asp-for="Type"></label>
+                <select asp-for="Type" asp-items="Html.GetEnumSelectList<TypeBusiness>()" class="form-control" disabled></select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="WebPageUrl"></label>
+                <input asp-for="WebPageUrl" class="form-control" disabled />
+            </div>
+            <div class="form-group">
+                <label asp-for="City"></label>
+                <input asp-for="City" class="form-control" disabled />
+            </div>
+            <div class="form-group">
+                <label asp-for="Address"></label>
+                <input asp-for="Address" class="form-control" disabled />
+            </div>
+            <div class="form-group">
+                <label asp-for="LatLocation"></label>
+                <input asp-for="LatLocation" class="form-control" disabled />
+            </div>
+            <div class="form-group">
+                <label asp-for="LngLocation"></label>
+                <input asp-for="LngLocation" class="form-control" disabled />
+            </div>
+            <div class="form-group">
+                <label asp-for="PetTypes"></label>
+                <br />
+                <input type="checkbox" name="PetTypes" value="@((int)PetType.SmallBreedDog)" disabled /> SmallBreedDog
+                <input type="checkbox" name="PetTypes" value="@((int)PetType.AllDogs)" disabled /> AllDogs
+                <input type="checkbox" name="PetTypes" value="@((int)PetType.Cat)" disabled /> Cats
+                <input type="checkbox" name="PetTypes" value="@((int)PetType.OtherType)" disabled /> OtherType
+            </div>
+            <div class="form-group">
+                <label asp-for="Note"></label>
+                <input asp-for="Note" class="form-control" disabled />
+            </div>
+            <div class="form-group">
+                <label asp-for="PicUrl"></label>
+                <input asp-for="PicUrl" class="form-control" disabled />
+            </div>
+
+            @if (User.IsInRole(WebConstants.ModeratorRole) || User.IsInRole(WebConstants.AdministratorRole))
+            {
+                <div class="form-group">
+                    <label asp-for="IsApproved"></label>
+                    @Html.RadioButtonFor(m => m.IsApproved, true) Yes
+                    @Html.RadioButtonFor(m => m.IsApproved, false) No
+                </div>
+            }
+
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+</div>

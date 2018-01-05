@@ -1,0 +1,10 @@
+﻿<form asp-action="BusinessByType" method="post">
+    <div class="row">
+        <div class="form-group col-md-3">
+            <select name="Type" asp-items="Html.GetEnumSelectList<TypeBusiness>()" class="form-control"></select>
+        </div>
+        <div class="col-md-3">
+            <input class="btn btn-sm btn-primary" type="submit" value="Select"/>
+        </div>
+    </div>
+</form>

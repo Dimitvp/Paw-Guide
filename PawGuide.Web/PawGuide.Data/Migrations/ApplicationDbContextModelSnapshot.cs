@@ -198,6 +198,8 @@ namespace PawGuide.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(90);
 
+                    b.Property<string>("Image");
+
                     b.Property<bool>("IsApproved");
 
                     b.Property<double>("LatLocation");

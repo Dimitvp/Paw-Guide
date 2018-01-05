@@ -5,7 +5,7 @@
     using Data.Models;
 
     using PawGuide.Common.Mapping;
-    public class BusinessListingServiceModel : IMapFrom<Business>, IHaveCustomMapping
+    public class BusinessListingServiceModel : IMapFrom<Business>
     {
         public int Id { get; set; }
 
@@ -29,9 +29,11 @@
 
         public string Author { get; set; }
 
-        public void ConfigureMapping(Profile mapper)
-            => mapper
-                .CreateMap<Business, BusinessListingServiceModel>()
-                .ForMember(b => b.Author, cfg => cfg.MapFrom(b => b.Author.UserName));
+        public string Image { get; set; }
+
+        //public void ConfigureMapping(Profile mapper)
+        //    => mapper
+        //        .CreateMap<Business, BusinessListingServiceModel>()
+        //        .ForMember(b => b.Author, cfg => cfg.MapFrom(b => b.Author.UserName));
     }
 }

@@ -1,0 +1,89 @@
+﻿@model BusinessListingViewModel
+@{
+    ViewData["Title"] = "Pet Friendly";
+}
+
+@await Html.PartialAsync("_HeadingPartial")
+
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <!-- *** LEFT COLUMN ***
+            _________________________________________________________ -->
+
+            <div class="col-md-9" id="blog-listing-small">
+                @await Html.PartialAsync("_TypeSelectFormPartial")
+                
+                <div class="row">
+
+                    @foreach (var business in Model.Businesses)
+                    {
+                        if (business.IsApproved == true || business.Author == User.Identity.Name)
+                        {
+                            <div class="col-md-4 col-sm-6">
+                                <div class="box-image-text blog">
+                                    <div class="top">
+                                        <div class="image">
+                                            <img src="@business.PicUrl" alt="" class="img-responsive">
+                                            @if (business.IsApproved == false)
+                                            {
+                                                <img src="https://barmakapproved.files.wordpress.com/2012/07/notapproved.png"/>
+                                            }
+                                        </div>
+                                        <div class="bg"></div>
+                                        <div class="text">
+                                            <p class="buttons">
+                                                <a asp-action="Details" asp-route-id="@business.Id" asp-route-title="@business.Name.ToFriendlyUrl()" class="btn btn-template-transparent-primary">
+                                                    <i class="fa fa-link"></i>
+                                                    Read more
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <h4>
+                                            <a asp-action="Details" asp-route-id="@business.Id" asp-route-title="@business.Name.ToFriendlyUrl()">
+                                                @business.Name
+                                            </a>
+                                        </h4>
+                                        <p class="author-category">
+                                            By
+                                            @business.Author
+                                            on
+                                            @business.PublishDate.ToShortDateString()
+                                        </p>
+                                        <p class="text-center">
+                                            @{
+                                                var businessIndex = business.Type.GetHashCode();
+                                                var businessType = Model.Type(businessIndex);
+                                                var petIndex = business.PetType.GetHashCode();
+                                                var petType = Model.PetType(petIndex);
+                                            }
+
+                                            Type of place: @Html.DisplayFor(model => businessType)
+                                            <br/>
+                                            City: @business.City
+                                            <br/>
+                                            Pets Alowed: @Html.DisplayFor(model => petType)
+                                        </p>
+                                        <p class="read-more">
+                                            <a asp-action="Details" asp-route-id="@business.Id" asp-route-title="@business.Name.ToFriendlyUrl()" class="btn btn-template-main">
+                                                Continue reading
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- /.box-image-text -->
+                            </div>
+                        }
+                    }
+
+                </div>
+                @await Html.PartialAsync("_PagerPartial")
+
+            </div>
+            <!-- /.col-md-9 -->
+            <!-- *** LEFT COLUMN END *** -->
+        </div>
+    </div>
+</div>

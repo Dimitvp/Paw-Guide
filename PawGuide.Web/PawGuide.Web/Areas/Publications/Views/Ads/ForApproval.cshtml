@@ -4,59 +4,59 @@
     ViewData["Title"] = "Ads for Approvel";
 }
 
-<h1 class="text-center">@ViewData["Title"]</h1>
+@await Html.PartialAsync("_HeadingPartial")
 
 <div class="row text-center">
-<div class="col-md-2"></div>
-<div class="col-md-8">
-    <table class="table table-bordered table-hover">
-        <thead>
-        <tr>
-            <th>
-                Title
-            </th>
-            <th>
-                Pic
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var ad in Model.Ads)
-        {
-            if (ad.IsApproved == false)
-            {
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <table class="table table-bordered table-hover">
+            <thead>
                 <tr>
                     <th>
-                        <a asp-area="Publications" asp-controller="Ads" asp-action="Edit" asp-route-id="@ad.Id" asp-route-title="@ad.Title.ToFriendlyUrl()">@ad.Title</a>
+                        Title
                     </th>
                     <th>
-                        <div class="col-md-2 image">
-                            <img src="@ad.PicUrl" class="img-responsive" alt="@ad.Title"/>
-                        </div>
+                        Pic
                     </th>
                 </tr>
-            }
-        }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var ad in Model.Ads)
+                {
+                    if (ad.IsApproved == false)
+                    {
+                        <tr>
+                            <th>
+                                <a asp-area="Publications" asp-controller="Ads" asp-action="Edit" asp-route-id="@ad.Id" asp-route-title="@ad.Title.ToFriendlyUrl()">@ad.Title</a>
+                            </th>
+                            <th>
+                                <div class="col-md-2 image">
+                                    <img src="@ad.PicUrl" class="img-responsive" alt="@ad.Title" />
+                                </div>
+                            </th>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
 
-@if (Model.TotalAds > Model.Ads.Count())
-{
-    <ul class="pagination">
-        <li class="@(Model.CurrentPage == 1 ? "disabled" : string.Empty)">
-            <a asp-route-page="@Model.PreviousPage"
-               aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        <li class="@(Model.CurrentPage == Model.TotalPages ? "disabled" : string.Empty)">
-            <a asp-route-page="@Model.NextPage"
-               aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-    </ul>
-}
+        @if (Model.TotalAds > Model.Ads.Count())
+        {
+            <ul class="pagination">
+                <li class="@(Model.CurrentPage == 1 ? "disabled" : string.Empty)">
+                    <a asp-route-page="@Model.PreviousPage"
+                       aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="@(Model.CurrentPage == Model.TotalPages ? "disabled" : string.Empty)">
+                    <a asp-route-page="@Model.NextPage"
+                       aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        }
 
     </div>
     <div class="col-md-2"></div>

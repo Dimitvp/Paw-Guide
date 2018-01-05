@@ -2,23 +2,7 @@
 @{
     ViewData["Title"] = "Ads";
 }
-<div id="heading-breadcrumbs">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-7">
-                <h1>@ViewData["Title"]</h1>
-            </div>
-            <div class="col-md-5">
-                <ul class="breadcrumb">
-                    <li>
-                        <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li>@ViewData["Title"]</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+@await Html.PartialAsync("_HeadingPartial")
 
 <div id="content">
     <div class="container">
@@ -100,24 +84,24 @@
 </div>
 
 @*<div class="row">
-    <div class="col-md-6">
-        <ul class="list-group article-list">
-            @foreach (var ad in Model.Ads)
-            {
-                if (ad.IsApproved == true || ad.Author == User.Identity.Name)
+        <div class="col-md-6">
+            <ul class="list-group article-list">
+                @foreach (var ad in Model.Ads)
                 {
-                    <li class="list-group-item">
-                        <img src="@ad.PicUrl" alt="Sample Image" width="300px" />
-                        <a asp-action="Details" asp-route-id="@ad.Id" asp-route-title="@ad.Title.ToFriendlyUrl()">@ad.Title</a>
-                        <br />
-                        <small>published by @ad.Author on @ad.PublishDate.ToShortDateString()</small>
-                        @if (ad.IsApproved == false)
-                        {
-                            <img src="https://barmakapproved.files.wordpress.com/2012/07/notapproved.png" />
-                        }
-                    </li>
+                    if (ad.IsApproved == true || ad.Author == User.Identity.Name)
+                    {
+                        <li class="list-group-item">
+                            <img src="@ad.PicUrl" alt="Sample Image" width="300px" />
+                            <a asp-action="Details" asp-route-id="@ad.Id" asp-route-title="@ad.Title.ToFriendlyUrl()">@ad.Title</a>
+                            <br />
+                            <small>published by @ad.Author on @ad.PublishDate.ToShortDateString()</small>
+                            @if (ad.IsApproved == false)
+                            {
+                                <img src="https://barmakapproved.files.wordpress.com/2012/07/notapproved.png" />
+                            }
+                        </li>
+                    }
                 }
-            }
-        </ul>
-    </div>
-</div>*@
+            </ul>
+        </div>
+    </div>*@

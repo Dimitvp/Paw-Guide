@@ -4,37 +4,37 @@
     ViewData["Title"] = "Businesses for Approvel";
 }
 
-<h1 class="text-center">@ViewData["Title"]</h1>
+@await Html.PartialAsync("_HeadingPartial")
 
 <div class="row text-center">
     <div class="col-md-2"></div>
     <div class="col-md-8">
         <table class="table table-bordered table-hover">
             <thead>
-            <tr>
-                <th>
-                    Name
-                </th>
-                <th>
-                    Type
-                </th>
-            </tr>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Type
+                    </th>
+                </tr>
             </thead>
             <tbody>
-            @foreach (var business in Model.Businesses)
-            {
-                if (business.IsApproved == false)
+                @foreach (var business in Model.Businesses)
                 {
-                    <tr>
-                        <th>
-                            <a asp-area="Business" asp-controller="Businesses" asp-action="Edit" asp-route-id="@business.Id" asp-route-title="@business.Name.ToFriendlyUrl()">@business.Name</a>
-                        </th>
-                        <th>
-                            @business.Type
-                        </th>
-                    </tr>
+                    if (business.IsApproved == false)
+                    {
+                        <tr>
+                            <th>
+                                <a asp-area="Business" asp-controller="Businesses" asp-action="Edit" asp-route-id="@business.Id" asp-route-title="@business.Name.ToFriendlyUrl()">@business.Name</a>
+                            </th>
+                            <th>
+                                @business.Type
+                            </th>
+                        </tr>
+                    }
                 }
-            }
             </tbody>
         </table>
 

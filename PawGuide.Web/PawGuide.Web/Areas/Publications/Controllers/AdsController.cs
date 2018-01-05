@@ -8,6 +8,7 @@
     using Services.Html;
     using Services.Publications;
     using Services.Publications.Models;
+    using Models;
     using Models.Ads;
     using Infrastructure.Filters;
     using Infrastructure.Extensions;
@@ -37,7 +38,7 @@
             => View(new AdListingViewModel
             {
                 Ads = await this.publications.AllAdsAsync(page),
-                TotalAds = await this.publications.TotalAsync(),
+                TotalPublications = await this.publications.TotalAsync(),
                 CurrentPage = page
             });
 
@@ -49,7 +50,7 @@
 
         [HttpPost]
         [ValidateModelState]
-        public async Task<IActionResult> Create(PublishAdFormModel model)
+        public async Task<IActionResult> Create(PublicationsFormModel model)
         {
             model.Content = this.html.Sanitize(model.Content);
 
@@ -106,7 +107,7 @@
             => View(new AdListingViewModel
             {
                 Ads = await this.publications.AllAdsAsync(page),
-                TotalAds = await this.publications.TotalAsync(),
+                TotalPublications = await this.publications.TotalAsync(),
                 CurrentPage = page
             });
     }

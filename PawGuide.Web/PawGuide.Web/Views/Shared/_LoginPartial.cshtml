@@ -8,9 +8,10 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" >
-        <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage"><span class="hidden-xs text-uppercase">Hello @UserManager.GetUserName(User)!</span></a>
+        <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage"><span class="hidden-xs text-uppercase">Hello @UserManager.GetUserAsync(User).Result.Name!</span></a>
         <button type="submit" class="btn-link"><i class="fa fa-sign-out"></i> <span class="hidden-xs text-uppercase">Log out</span></button>
     </form>
+    
 }
 else
 {
@@ -18,7 +19,7 @@ else
     @*<a href="#" data-toggle="modal" data-target="#login-modal"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Sign in</span></a>*@
     <a asp-area="" asp-controller="Account" asp-action="Login"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Sign in</span></a>
     @*<a href="customer-register.html"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Sign up</span></a>*@
-    <a asp-area="" asp-controller="Account" asp-action="Register"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Sign up</span></a>
+    <a asp-area="" asp-controller="Account" asp-action="Register"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Register</span></a>
 
     @*<ul class="nav navbar-nav navbar-right">
             <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>

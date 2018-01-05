@@ -1,10 +1,10 @@
-﻿namespace PawGuide.Web.Areas.Publications.Models.Ads
+﻿namespace PawGuide.Web.Areas.Publications.Models
 {
     using System.ComponentModel.DataAnnotations;
 
     using static Data.DataConstants;
 
-    public class PublishAdFormModel
+    public class PublicationsFormModel
     {
         [Required]
         [MinLength(PublicationTitleMinLength)]

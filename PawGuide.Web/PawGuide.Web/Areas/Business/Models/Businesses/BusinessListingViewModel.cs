@@ -6,7 +6,7 @@
     using Services;
     using Services.Businesses.Models;
 
-    public class BusinessListingViewModel
+    public class BusinessListingViewModel : Pager
     {
         public IEnumerable<BusinessListingServiceModel> Businesses { get; set; }
 
@@ -23,19 +23,5 @@
 
             return type;
         }
-
-        public int TotalBusinesses { get; set; }
-
-        public int TotalPages =>
-            (int)Math.Ceiling((double)this.TotalBusinesses / ServiceConstants.BusinessesPageSize);
-
-        public int CurrentPage { get; set; }
-
-        public int PreviousPage => this.CurrentPage <= 1 ? 1 : this.CurrentPage - 1;
-
-        public int NextPage
-            => this.CurrentPage == this.TotalPages
-                ? this.TotalPages
-                : this.CurrentPage + 1;
     }
 }

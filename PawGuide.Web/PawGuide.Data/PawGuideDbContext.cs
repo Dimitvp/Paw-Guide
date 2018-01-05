@@ -19,6 +19,7 @@
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+
             builder
                 .Entity<Business>()
                 .HasOne(a => a.Author)

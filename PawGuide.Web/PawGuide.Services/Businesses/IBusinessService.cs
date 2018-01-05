@@ -9,20 +9,24 @@
     {
         Task<IEnumerable<BusinessListingServiceModel>> AllAsync(int page = 1);
 
+        Task<IEnumerable<BusinessListingServiceModel>> BusinessTypeAsync(int type, int page = 1);
+
         Task<int> TotalAsync();
 
         Task<BusinessDetailsServiceModel> ById(int id);
 
         Task<IEnumerable<BusinessLocationsServicModel>> AllLocations();
 
-        Task CreateAsync(
+        Task SetImage(int id, string image);
+
+        Task<int> CreateAsync(
             string name,
             TypeBusiness type,
             string webPageUrl,
             string address,
             double latLocation,
             double lngLocation,
-            PetType petType,
+            IEnumerable<PetType> petTypes,
             string city,
             string picUrl,
             bool isApproved,
@@ -37,7 +41,7 @@
             string address,
             double latLocation,
             double lngLocation,
-            PetType petType,
+            IEnumerable<PetType> petTypes,
             string city,
             string picUrl,
             bool isApproved,
@@ -45,5 +49,7 @@
             string authorId);
 
         Task<bool> Exists(int id);
+
+        Task DeleteAsync(int id, string userId, User user);
     }
 }

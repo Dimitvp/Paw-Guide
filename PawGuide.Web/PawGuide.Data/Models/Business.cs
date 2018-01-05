@@ -44,6 +44,8 @@
         [MaxLength(PicUrlMaxLength)]
         public string PicUrl { get; set; }
 
+        public string Image { get; set; }
+
         public DateTime PublishDate { get; set; }
 
         public bool IsApproved { get; set; }
