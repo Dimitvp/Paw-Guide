@@ -39,6 +39,7 @@
                 CurrentPage = page
             });
 
+        [AllowAnonymous]
         public async Task<IActionResult> Search(BusinessSearchFormModel model)
         {
             var viewModel = new BusinessSearchViewModel

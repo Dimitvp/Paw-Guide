@@ -53,48 +53,7 @@
     </environment>
 </head>
 <body>
-    @*<nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Paw Guide</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a asp-area="Publications" asp-controller="Articles" asp-action="Index">Articles</a></li>
-                        <li><a asp-area="Business" asp-controller="Businesses" asp-action="Index">Businesses</a></li>
-                        <li><a asp-area="Publications" asp-controller="Ads" asp-action="Index">Ads</a></li>
-
-                        @if (User.IsInRole(WebConstants.AdministratorRole))
-                        {
-                            <li><a asp-area="Admin" asp-controller="Users" asp-action="Index">Users</a></li>
-                        }
-
-                        @if (User.IsInRole(WebConstants.ModeratorRole) || User.IsInRole(WebConstants.AdministratorRole))
-                        {
-                            <li><a asp-area="Business" asp-controller="Businesses" asp-action="ForApproval">Moderator Panel Businesses</a></li>
-                            <li><a asp-area="Publications" asp-controller="Ads" asp-action="ForApproval">Moderator Panel Ads</a></li>
-                            <li><a asp-area="Publications" asp-controller="Articles" asp-action="Create">Create Article</a></li>
-                        }
-
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <li><a asp-area="Business" asp-controller="Businesses" asp-action="Create">Add Business</a></li>
-                            <li><a asp-area="Publications" asp-controller="Ads" asp-action="Create">Create Ads</a></li>
-                        }
-                    </ul>
-                    @await Html.PartialAsync("_LoginPartial")
-                </div>
-            </div>
-        </nav>
-        <br />
-        <br />
-        <br />*@
+   
     <div id="all">
         <header>
 
@@ -154,38 +113,7 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="dropdown active">
                                     <a asp-area="Business" asp-controller="Businesses" asp-action="Index">Businesses</a>
-                                    @*<ul class="dropdown-menu">*@
-                                        @*@Html.DropDownListFor(m => m.Type, Model.Type, "Select Manufacurer")*@
-                                        @*<li>
-                                            <a asp-area="Business" asp-controller="Businesses" asp-action="Index">All Businesses</a>
-                                        </li>*@
-                                        @*<form asp-area="Business" asp-controller="Businesses" asp-action="BusinessByType" method="post">*@
-                                            @*<select name="Type" asp-items="Html.GetEnumSelectList<TypeBusiness>()" class="form-control"></select>*@
-
-                                                @*<input type="hidden" name="UserId" value="@user.Id" />*@
-                                            @*<select name="Role" asp-items="@Model.Type" class="form-control"></select>*@
-                                            @*<li><a asp-area="Business" asp-controller="Businesses" asp-action="BusinessByType"><input type="hidden"  value="Entertainment places" />Entertainment places</a></li>*@
-                                                
-                                            @*<li>
-                                                <a asp-area="Business" asp-controller="Businesses" asp-action="BusinessByType" >Entertainment places</a>
-                                            </li>
-                                            <li>
-                                                <a asp-area="Business" asp-controller="Businesses" asp-action="BusinessByType">Hotels</a>
-                                            </li>
-                                            <li>
-                                                <a asp-area="Business" asp-controller="Businesses" asp-action="BusinessByType">Private Houses</a>
-                                            </li>
-                                            <li>
-                                                <a asp-area="Business" asp-controller="Businesses" asp-action="BusinessByType">Campings</a>
-                                            </li>
-                                            <li>
-                                                <a asp-area="Business" asp-controller="Businesses" asp-action="BusinessByType">Cabins</a>
-                                            </li>
-                                            <li>
-                                                <a asp-area="Business" asp-controller="Businesses" asp-action="BusinessByType">Other Types</a>
-                                            </li>*@
-                                        @*</form>*@
-                                    @*</ul>*@
+                                  
                                 </li>
                                 <li class="dropdown use-yamm yamm-fw">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Articles<b class="caret"></b></a>
@@ -202,44 +130,19 @@
                                                             <li>
                                                                 <a asp-area="Publications" asp-controller="Articles" asp-action="Index">All Articles</a>
                                                             </li>
-                                                            <li>
-                                                                <a href="template-alerts.html">Alerts</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="template-buttons.html">Buttons</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="template-content-boxes.html">Content boxes</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="template-blocks.html">Horizontal blocks</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="template-pagination.html">Pagination</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="template-tabs.html">Tabs</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="template-typography.html">Typography</a>
-                                                            </li>
                                                         </ul>
+
+                                                        
                                                     </div>
                                                     <div class="col-sm-3">
-                                                        <h5>Header variations</h5>
+                                                        <h5>You want to travel with you pet?</h5>
                                                         <ul>
                                                             <li>
-                                                                <a href="template-header-default.html">Default sticky header</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="template-header-nosticky.html">No sticky header</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="template-header-light.html">Light header</a>
+                                                                <a >This are some helpful articles!</a>
                                                             </li>
                                                         </ul>
                                                     </div>
-                                                </div>
+                                                    </div>
                                             </div>
                                         </li>
                                     </ul>
@@ -270,212 +173,23 @@
                                                             </li>
                                                         </ul>
                                                     </div>
+
                                                     <div class="col-sm-3">
-                                                        <h5>About</h5>
+                                                        <h5>You have some cuty that needs a home?</h5>
                                                         <ul>
                                                             <li>
-                                                                <a href="about.html">About us</a>
+                                                                <a>Show it to everyone on the net!</a>
                                                             </li>
-                                                            <li>
-                                                                <a href="team.html">Our team</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="team-member.html">Team member</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="services.html">Services</a>
-                                                            </li>
+                                                            
                                                         </ul>
                                                     </div>
+
                                                 </div>
                                             </div>
                                         </li>
                                     </ul>
                                 </li>
-                                <!-- ========== FULL WIDTH MEGAMENU ================== -->
-                                @*<li class="dropdown use-yamm yamm-fw">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">All Pages <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <div class="yamm-content">
-                                                <div class="row">
-                                                    <div class="col-sm-3">
-                                                        <h5>Home</h5>
-                                                        <ul>
-                                                            <li>
-                                                                <a href="index.html">Option 1: Default Page</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="index2.html">Option 2: Application</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="index3.html">Option 3: Startup</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="index4.html">Option 4: Agency</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="index5.html">Option 5: Portfolio</a>
-                                                            </li>
-                                                        </ul>
-                                                        <h5>About</h5>
-                                                        <ul>
-                                                            <li>
-                                                                <a href="about.html">About us</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="team.html">Our team</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="team-member.html">Team member</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="services.html">Services</a>
-                                                            </li>
-                                                        </ul>
-                                                        <h5>Marketing</h5>
-                                                        <ul>
-                                                            <li>
-                                                                <a href="packages.html">Packages</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <h5>Portfolio</h5>
-                                                        <ul>
-                                                            <li>
-                                                                <a href="portfolio-2.html">2 columns</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="portfolio-no-space-2.html">2 columns with negative space</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="portfolio-3.html">3 columns</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="portfolio-no-space-3.html">3 columns with negative space</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="portfolio-4.html">4 columns</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="portfolio-no-space-4.html">4 columns with negative space</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="portfolio-detail.html">Portfolio - detail</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="portfolio-detail-2.html">Portfolio - detail 2</a>
-                                                            </li>
-                                                        </ul>
-                                                        <h5>User pages</h5>
-                                                        <ul>
-                                                            <li>
-                                                                <a href="customer-register.html">Register / login</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="customer-orders.html">Orders history</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="customer-order.html">Order history detail</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="customer-wishlist.html">Wishlist</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="customer-account.html">Customer account / change password</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <h5>Shop</h5>
-                                                        <ul>
-                                                            <li>
-                                                                <a href="shop-category.html">Category - sidebar right</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="shop-category-left.html">Category - sidebar left</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="shop-category-full.html">Category - full width</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="shop-detail.html">Product detail</a>
-                                                            </li>
-                                                        </ul>
-                                                        <h5>Shop - order process</h5>
-                                                        <ul>
-                                                            <li>
-                                                                <a href="shop-basket.html">Shopping cart</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="shop-checkout1.html">Checkout - step 1</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="shop-checkout2.html">Checkout - step 2</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="shop-checkout3.html">Checkout - step 3</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="shop-checkout4.html">Checkout - step 4</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <h5>Contact</h5>
-                                                        <ul>
-                                                            <li>
-                                                                <a href="contact.html">Contact</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="contact2.html">Contact - version 2</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="contact3.html">Contact - version 3</a>
-                                                            </li>
-                                                        </ul>
-                                                        <h5>Pages</h5>
-                                                        <ul>
-                                                            <li>
-                                                                <a href="text.html">Text page</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="text-left.html">Text page - left sidebar</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="text-full.html">Text page - full width</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="faq.html">FAQ</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="404.html">404 page</a>
-                                                            </li>
-                                                        </ul>
-                                                        <h5>Blog</h5>
-                                                        <ul>
-                                                            <li>
-                                                                <a href="blog.html">Blog listing big</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="blog-medium.html">Blog listing medium</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="blog-small.html">Blog listing small</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="blog-post.html">Blog Post</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>*@
-                                <!-- /.yamm-content -->
-                                @*</li>
-                                        </ul>
-                                    </li>*@
-                                <!-- ========== FULL WIDTH MEGAMENU END ================== -->
+                               
                                 @if (User.IsInRole(WebConstants.AdministratorRole) || User.IsInRole(WebConstants.ModeratorRole))
                                 {
                                     <li class="dropdown">
@@ -539,52 +253,38 @@
 
             <!-- *** NAVBAR END *** -->
         </header>
-        <!-- *** LOGIN MODAL ***
-        _________________________________________________________ -->
-        @*<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
-                <div class="modal-dialog modal-md">
-
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            @*<h4 class="modal-title" id="Login">Customer login</h4>
-                        </div>
-                        <div class="modal-body">
-
-                            @await Html.PartialAsync("~/Views/Account/_LoginFormPartial.cshtml")
-
-                            <form asp-route-returnurl="@ViewData["ReturnUrl"] method="post">
-                                    <div asp-validation-summary="All" class="text-danger"></div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="email_modal" placeholder="email">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" id="password_modal" placeholder="password">
-                                    </div>
-
-                                    <p class="text-center">
-                                        <button type="submit" class="btn btn-template-main"><i class="fa fa-sign-in"></i> Log in</button>
-                                    </p>
-
-                                </form>
-
-                                <p class="text-center text-muted">Not registered yet?</p>
-                                <p class="text-center text-muted"><a href="customer-register.html"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!
-                                </p>
-
-                        </div>
-                    </div>
+    @{
+        if (TempData.ContainsKey(WebConstants.TempDataSuccessMessageKey))
+        {
+            <div class="text-center+">
+                <div class="alert alert-success text-center fade show" role="alert" id="my-elert">
+                    <strong>@TempData[WebConstants.TempDataSuccessMessageKey]</strong>
                 </div>
-            </div>*@
-
-        <!-- *** LOGIN MODAL END *** -->
-        @*<div class="container body-content">*@
+            </div>
+        }
+        else if (TempData.ContainsKey(WebConstants.TempDataWarningMessageKey))
+        {
+            <div class="text-center">
+                <div class="alert alert-warning text-center fade show" role="alert">
+                    <strong>@TempData[WebConstants.TempDataWarningMessageKey]</strong>
+                </div>
+            </div>
+        }
+        else if (TempData.ContainsKey(WebConstants.TempDataDangerMessageKey))
+        {
+            <div class="text-center">
+                <div class="alert alert-danger text-center fade show" role="alert">
+                    <strong>@TempData[WebConstants.TempDataDangerMessageKey]</strong>
+                </div>
+            </div>
+        }
+    }
         @RenderBody()
         <hr />
         <!-- *** FOOTER ***
         _________________________________________________________ -->
 
-        @await Html.PartialAsync("_FooterPartial")
+        @*@await Html.PartialAsync("_FooterPartial")*@
 
         <!-- *** FOOTER END *** -->
         <!-- *** COPYRIGHT ***

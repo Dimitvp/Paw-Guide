@@ -59,8 +59,8 @@
 
             return await this.db
                 .Businesses
-                .OrderByDescending(c => c.Id)
-                .Where(c => c.Name.ToLower().Contains(searchText.ToLower()))
+                .OrderByDescending(b => b.Id)
+                .Where(b => b.City.ToLower().Contains(searchText.ToLower()))
                 .ProjectTo<BusinessListingServiceModel>()
                 .ToListAsync();
         }

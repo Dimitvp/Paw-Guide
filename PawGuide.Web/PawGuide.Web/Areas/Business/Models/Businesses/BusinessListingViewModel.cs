@@ -4,7 +4,7 @@
     using Services.Businesses.Models;
     using System.Collections.Generic;
 
-    public class BusinessListingViewModel : Pager
+    public class BusinessListingViewModel : BusinessSearchFormModel
     {
         public IEnumerable<BusinessListingServiceModel> Businesses { get; set; }
 

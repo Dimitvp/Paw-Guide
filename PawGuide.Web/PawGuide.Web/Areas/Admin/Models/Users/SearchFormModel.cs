@@ -1,8 +1,6 @@
 ﻿namespace PawGuide.Web.Areas.Admin.Models.Users
 {
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using Microsoft.AspNetCore.Mvc.Rendering;
 
     public class SearchFormModel
     {

@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class BusinessSearchFormModel
+    public class BusinessSearchFormModel : Pager
     {
         public string SearchText { get; set; }
 
