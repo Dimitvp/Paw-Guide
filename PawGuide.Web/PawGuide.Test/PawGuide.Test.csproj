@@ -6,10 +6,8 @@
 
   <ItemGroup>
     <Folder Include="Services\Admin\" />
-    <Folder Include="Services\Business\" />
     <Folder Include="Services\Publications\" />
     <Folder Include="Web\Areas\Admin\" />
-    <Folder Include="Web\Areas\Business\" />
     <Folder Include="Web\Areas\Publications\" />
   </ItemGroup>
 
