@@ -9,7 +9,7 @@
 
     using static Data.DataConstants;
 
-    public class PublishBusinessFormModel : IMapFrom<BusinessDetailsServiceModel>
+    public class BusinessFormViewModel : IMapFrom<BusinessEditServiceModel>
     {
         [Required]
         [MinLength(UserNameMinLength)]
@@ -21,6 +21,7 @@
 
         [MinLength(5)]
         [MaxLength(2000)]
+        [Display(Name = "Web Page")]
         public string WebPageUrl { get; set; }
 
         [Required]
@@ -33,12 +34,16 @@
         [MaxLength(BusinessAddressMaxLength)]
         public string Address { get; set; }
 
+        [Display(Name = "Lalatitude")]
         public double LatLocation { get; set; }
 
+        [Display(Name = "Longitude")]
         public double LngLocation { get; set; }
 
         public bool IsApproved { get; set; }
 
+        [Required]
+        [Display(Name = "Pet Types")]
         public IEnumerable<PetType> PetTypes { get; set; }
 
         public IFormFile Image { get; set; }
@@ -47,6 +52,7 @@
 
         [MinLength(PicUrlMinLength)]
         [MaxLength(PicUrlMaxLength)]
+        [Display(Name = "Picture URL")]
         public string PicUrl { get; set; }
     }
 }

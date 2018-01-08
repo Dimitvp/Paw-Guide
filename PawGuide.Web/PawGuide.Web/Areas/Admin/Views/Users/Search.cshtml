@@ -1,0 +1,94 @@
+﻿@model SearchViewModel
+@{
+    ViewData["Title"] = "Found users";
+}
+@await Html.PartialAsync("_HeadingPartial")
+
+<h2>Search</h2>
+
+@if (Model.Users.Any())
+{
+    <h3>Found users</h3>
+
+    <div id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9" id="blog-listing-small">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    E-mail
+                                </th>
+                                <th>
+                                    Roles
+                                </th>
+                                <th>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var user in Model.Users)
+                        {
+                            <tr>
+                                <th>
+                                    @user.Name
+                                </th>
+                                <th>
+                                    @user.Email
+                                </th>
+                                <th>
+                                    <form asp-action="AddToRole" method="post">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <input type="hidden" name="UserId" value="@user.Id" />
+                                                <select name="Role" asp-items="Model.Roles" class="form-control"></select>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input class="btn btn-sm btn-primary" type="submit" value="Add" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </th>
+                                <th>
+                                    <a asp-area="Admin" asp-action="Details" asp-route-id="@user.Id" class="btn btn-template-main">Details</a>
+
+                                </th>
+                            </tr>
+                    }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- *** RIGHT COLUMN ***
+            _________________________________________________________ -->
+
+                <div class="col-md-3">
+                    <div class="panel panel-default sidebar-menu">
+
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Search</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            <form asp-action="Search">
+                                <div class="input-group">
+                                    <input asp-for="SearchText" class="form-control" placeholder="Search..." />
+                                    <span class="input-group-btn">
+                                        <button type="submit" class="btn btn-template-main" value="Search"><i class="fa fa-search"></i></button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <h3>No users to show.</h3>
+}

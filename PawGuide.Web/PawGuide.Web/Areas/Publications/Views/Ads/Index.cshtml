@@ -57,7 +57,7 @@
                     }
                 }
 
-                @if (Model.TotalAds > Model.Ads.Count())
+                @if (Model.TotalPublications > Model.Ads.Count())
                 {
                     <ul class="pager">
                         <li class="@(Model.CurrentPage == 1 ? "disabled" : string.Empty)">

@@ -8,7 +8,17 @@
         {
             if (petType == PetType.SmallBreedDog)
             {
-                return "Small BreedDog";
+                return "Small Dogs Breeds";
+            }
+
+            if (petType == PetType.AllDogs)
+            {
+                return "All Kinds of Dogs";
+            }
+
+            if (petType == PetType.OtherType)
+            {
+                return "Other Types of Pets";
             }
 
             return petType.ToString();

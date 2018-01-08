@@ -1,5 +1,6 @@
 ﻿namespace PawGuide.Web.Areas.Admin.Controllers
 {
+    using System;
     using Data.Models;
     using Infrastructure.Extensions;
     using Microsoft.AspNetCore.Authorization;
@@ -11,6 +12,8 @@
     using Services.Admin;
     using System.Linq;
     using System.Threading.Tasks;
+
+    using static  WebConstants;
 
     public class UsersController : BaseAdminController
     {
@@ -28,7 +31,7 @@
             this.roleManager = roleManager;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchTerm, int page = 1)
         {
             var users = await this.users.AllAsync();
             var roles = await this.roleManager
@@ -45,6 +48,50 @@
                 Users = users,
                 Roles = roles
             });
+        }
+            
+        public async Task<IActionResult> Details(string id)
+        {
+            var user = await this.userManager.FindByIdAsync(id);
+            var currentUser = await this.users.UserById(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var roles = await this.userManager.GetRolesAsync(user);
+            var Phone = await this.userManager.GetPhoneNumberAsync(user);
+            currentUser.Roles = roles;
+            currentUser.Phone = Phone;
+
+            return View(currentUser);
+        }
+
+        public async Task<IActionResult> Search(SearchFormModel model)
+        {
+
+            var roles = await this.roleManager
+                .Roles
+                .Select(r => new SelectListItem
+                {
+                    Text = r.Name,
+                    Value = r.Name
+                })
+                .ToListAsync();
+
+            var viewModel = new SearchViewModel
+            {
+                SearchText = model.SearchText,
+                Roles = roles
+            };
+
+            if (model.SearchInUsers)
+            {
+                viewModel.Users = await this.users.FindAsync(model.SearchText);
+            }
+
+            return View(viewModel);
         }
 
         [HttpPost]
@@ -66,7 +113,7 @@
 
             await this.userManager.AddToRoleAsync(user, model.Role);
 
-            TempData.AddSuccessMessage($"User {user.UserName} successfully added to the {model.Role} role.");
+            this.TempData.AddSuccessMessage(string.Format(SuccessfullAddRoleToUser, model.Role, user.UserName));
             return RedirectToAction(nameof(Index));
         }
     }

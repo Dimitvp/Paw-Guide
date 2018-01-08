@@ -1,0 +1,48 @@
+﻿@model UserDetailsServiceModel
+@{
+    ViewData["Title"] = $"Details for {Model.Username}";
+}
+
+@await Html.PartialAsync("_HeadingPartial")
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-warning">
+                        <div class="card-title">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5>@ViewData["Title"]</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h5><strong>Name:</strong> @Model.Name</h5>
+                        <h5><strong>Email:</strong> @Model.Email</h5>
+                        <h5><strong>Phone Number:</strong> @Model.Phone</h5>
+                        <h5><strong>Number of added businesses:</strong> @Model.BusinessesCount</h5>
+                        <h5><strong>Number of added Articles:</strong> @Model.ArticlesCount</h5>
+                        <h5><strong>Number of added Ads:</strong> @Model.AdsCount</h5>
+                        <h5><strong>Roles:</strong> @(string.Join(", ", Model.Roles))</h5>
+                    </div>
+                    <div class="col-md-6">
+                        @*<form asp-action="AddToRole" method="post">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="hidden" name="UserId" value="@Model.Id"/>
+                                    <select name="Role" asp-items=Model.Roles class="form-control"></select>
+                                </div>
+                                <div class="col-md-4">
+                                    <input class="btn btn-small btn-template-main col-md-12" type="submit" value="Add To Role"/>
+                                </div>
+                            </div>
+                        </form>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

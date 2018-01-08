@@ -7,5 +7,9 @@
     public interface IAdminUserService
     {
         Task<IEnumerable<AdminUserListingServiceModel>> AllAsync();
+
+        Task<UserDetailsServiceModel> UserById(string id);
+
+        Task<IEnumerable<AdminUserListingServiceModel>> FindAsync(string searchText);
     }
 }

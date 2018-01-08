@@ -1,4 +1,5 @@
 ﻿@model UserListingsViewModel
+
 @{
     ViewData["Title"] = "Users Administration";
 }
@@ -6,25 +7,29 @@
 <div id="content">
     <div class="container">
         <div class="row">
-            <table class="table table-bordered table-hover">
-                <thead>
+            <div  class="col-md-9" id="blog-listing-small">
+                <table class="table table-bordered table-hover">
+                    <thead>
                     <tr>
                         <th>
-                            Username
+                            Name
                         </th>
                         <th>
                             E-mail
                         </th>
                         <th>
+                            Roles
+                        </th>
+                        <th>
                         </th>
                     </tr>
-                </thead>
-                <tbody>
+                    </thead>
+                    <tbody>
                     @foreach (var user in Model.Users)
                     {
                         <tr>
                             <th>
-                                @user.Username
+                                @user.Name
                             </th>
                             <th>
                                 @user.Email
@@ -32,20 +37,46 @@
                             <th>
                                 <form asp-action="AddToRole" method="post">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-9">
                                             <input type="hidden" name="UserId" value="@user.Id" />
                                             <select name="Role" asp-items="Model.Roles" class="form-control"></select>
                                         </div>
-                                        <div class="col-md-4">
-                                            <input class="btn btn-small btn-template-main col-md-12" type="submit" value="Add To Role" />
+                                        <div class="col-md-3">
+                                            <input class="btn btn-sm btn-primary" type="submit" value="Add" />
                                         </div>
                                     </div>
                                 </form>
+                                <th>
+                                    <a asp-area="Admin" asp-action="Details" asp-route-id="@user.Id" class="btn btn-template-main">Details</a>
+                                </th>
                             </th>
                         </tr>
                     }
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
+            <!-- *** RIGHT COLUMN ***
+            _________________________________________________________ -->
+
+            <div class="col-md-3">
+                <div class="panel panel-default sidebar-menu">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Search</h3>
+                    </div>
+
+                    <div class="panel-body">
+                        <form asp-action="Search">
+                            <div class="input-group">
+                                <input asp-for="SearchText" class="form-control" placeholder="Search..." />
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-template-main" value="Search"><i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

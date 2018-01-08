@@ -53,11 +53,30 @@
                 .ProjectTo<BusinessLocationsServicModel>()
                 .ToListAsync();
 
+        public async Task<IEnumerable<BusinessListingServiceModel>> FindAsync(string searchText)
+        {
+            searchText = searchText ?? string.Empty;
+
+            return await this.db
+                .Businesses
+                .OrderByDescending(c => c.Id)
+                .Where(c => c.Name.ToLower().Contains(searchText.ToLower()))
+                .ProjectTo<BusinessListingServiceModel>()
+                .ToListAsync();
+        }
+
         public async Task<BusinessDetailsServiceModel> ById(int id)
             => await this.db
                 .Businesses
                 .Where(a => a.Id == id)
                 .ProjectTo<BusinessDetailsServiceModel>()
+                .FirstOrDefaultAsync();
+
+        public async Task<BusinessEditServiceModel> EditById(int id)
+            => await this.db
+                .Businesses
+                .Where(a => a.Id == id)
+                .ProjectTo<BusinessEditServiceModel>()
                 .FirstOrDefaultAsync();
 
         public async Task SetImage(int id, string image)

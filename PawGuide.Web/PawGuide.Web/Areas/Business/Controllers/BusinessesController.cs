@@ -10,6 +10,7 @@
     using PawGuide.Web.Areas.Business.Models.Businesses;
     using Services.Businesses;
     using System.Threading.Tasks;
+
     using static WebConstants;
 
     [Area(BusinessArea)]
@@ -38,6 +39,21 @@
                 CurrentPage = page
             });
 
+        public async Task<IActionResult> Search(BusinessSearchFormModel model)
+        {
+            var viewModel = new BusinessSearchViewModel
+            {
+                SearchText = model.SearchText
+            };
+
+            if (model.SearchInBusinesses)
+            {
+                viewModel.Businesses = await this.businesses.FindAsync(model.SearchText);
+            }
+
+            return View(viewModel);
+        }
+
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> BusinessByType(int type, int page = 1)
@@ -65,7 +81,7 @@
 
         [HttpPost]
         [ValidateModelState]
-        public async Task<IActionResult> Create(PublishBusinessFormModel model)
+        public async Task<IActionResult> Create(BusinessFormViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -97,6 +113,8 @@
                 await this.businesses.SetImage(businessId, imageName);
             }
 
+            this.TempData.AddSuccessMessage(string.Format(SuccessfullAdd, model.Name));
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -110,18 +128,29 @@
                 return NotFound();
             }
 
-            var businessToEdit = await this.businesses.ById(id);
+            var businessToEdit = await this.businesses.EditById(id);
 
-            var publishFormModel = this.mapper.Map<PublishBusinessFormModel>(businessToEdit);
+            var publishFormModel = this.mapper.Map<BusinessFormViewModel>(businessToEdit);
             
             return this.ViewOrNotFound(publishFormModel);
         }
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, PublishBusinessFormModel businessModel)
+        public async Task<IActionResult> Edit(int id, BusinessFormViewModel businessModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(businessModel);
+            }
+
             var userId = this.userManager.GetUserId(User);
+
+            if (businessModel.Image.HasValidImage())
+            {
+                await this.businesses.SetImage(id, businessModel.Image.
+                    SaveImage(id, businessModel.Type.ToString(), businessModel.Name, BusinessImagesPath));
+            }
 
             var update = await this.businesses.EditAsync(
                 id,
@@ -138,10 +167,13 @@
                 businessModel.Note,
                 userId);
 
-            if (!update == null)
+            if (!update)
             {
-                return NotFound();
+                return this.BadRequest();
             }
+
+            this.TempData.AddWarningMessage(string.Format(SuccessfullEdit, businessModel.Name));
+
 
             return RedirectToAction(nameof(Index));
         }
@@ -171,9 +203,7 @@
 
             var businessToEdit = await this.businesses.ById(id);
 
-            var publishFormModel = this.mapper.Map<PublishBusinessFormModel>(businessToEdit);
-
-            return this.ViewOrNotFound(publishFormModel);
+            return this.ViewOrNotFound(businessToEdit);
         }
 
         [HttpPost]
@@ -184,8 +214,10 @@
 
             if (!isDeletable)
             {
-                return NotFound();
+                return this.BadRequest();
             }
+
+            this.TempData.AddDangerMessage(SuccessfullDelete);
 
             await this.businesses.DeleteAsync(id, this.userManager.GetUserId(User), user);
 

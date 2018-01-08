@@ -11,9 +11,13 @@
 
         Task<IEnumerable<BusinessListingServiceModel>> BusinessTypeAsync(int type, int page = 1);
 
+        Task<IEnumerable<BusinessListingServiceModel>> FindAsync(string searchText);
+
         Task<int> TotalAsync();
 
         Task<BusinessDetailsServiceModel> ById(int id);
+
+        Task<BusinessEditServiceModel> EditById(int id);
 
         Task<IEnumerable<BusinessLocationsServicModel>> AllLocations();
 

@@ -1,10 +1,8 @@
 ﻿namespace PawGuide.Web.Areas.Business.Models.Businesses
 {
-    using System;
-    using System.Collections.Generic;
     using Data.Models;
-    using Services;
     using Services.Businesses.Models;
+    using System.Collections.Generic;
 
     public class BusinessListingViewModel : Pager
     {

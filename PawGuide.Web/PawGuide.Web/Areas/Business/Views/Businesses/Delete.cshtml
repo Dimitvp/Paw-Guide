@@ -1,5 +1,5 @@
 ﻿@using PawGuide.Web
-@model PublishBusinessFormModel
+@model BusinessDetailsServiceModel
 
 @{
     ViewData["Title"] = "Delete Business";
@@ -44,14 +44,14 @@
                 <label asp-for="LngLocation"></label>
                 <input asp-for="LngLocation" class="form-control" disabled />
             </div>
-            <div class="form-group">
-                <label asp-for="PetTypes"></label>
+            @*<div class="form-group">
+                <label asp-for="PetType"></label>
                 <br />
-                <input type="checkbox" name="PetTypes" value="@((int)PetType.SmallBreedDog)" disabled /> SmallBreedDog
-                <input type="checkbox" name="PetTypes" value="@((int)PetType.AllDogs)" disabled /> AllDogs
-                <input type="checkbox" name="PetTypes" value="@((int)PetType.Cat)" disabled /> Cats
-                <input type="checkbox" name="PetTypes" value="@((int)PetType.OtherType)" disabled /> OtherType
-            </div>
+                <input type="checkbox" name="PetType" value="@((int)PetType.SmallBreedDog)" disabled /> SmallBreedDog
+                <input type="checkbox" name="PetType" value="@((int)PetType.AllDogs)" disabled /> AllDogs
+                <input type="checkbox" name="PetType" value="@((int)PetType.Cat)" disabled /> Cats
+                <input type="checkbox" name="PetType" value="@((int)PetType.OtherType)" disabled /> OtherType
+            </div>*@
             <div class="form-group">
                 <label asp-for="Note"></label>
                 <input asp-for="Note" class="form-control" disabled />
@@ -60,15 +60,6 @@
                 <label asp-for="PicUrl"></label>
                 <input asp-for="PicUrl" class="form-control" disabled />
             </div>
-
-            @if (User.IsInRole(WebConstants.ModeratorRole) || User.IsInRole(WebConstants.AdministratorRole))
-            {
-                <div class="form-group">
-                    <label asp-for="IsApproved"></label>
-                    @Html.RadioButtonFor(m => m.IsApproved, true) Yes
-                    @Html.RadioButtonFor(m => m.IsApproved, false) No
-                </div>
-            }
 
             <button type="submit" class="btn btn-danger">Delete</button>
         </form>

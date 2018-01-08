@@ -80,20 +80,28 @@ $(function () {
                             petType = 'Other Type';
                             break;
                             //TODO
+                            //For more then one Type Pet shows the default
                         default:
                             petType = 'Different kinds of Animal!';
                     };
-                    var contentString = '<div class="info-window text-center">' +
-                        '<h1><a href="http://localhost:9288/business/businesses/Details/'+ id +'">' + name + '</a></h1>' +
-                        '<img class="img-fluid" style="max-width: 100%; height: auto;" src="' + picUrl + '"/>'+
-                        '<h3>' + city + '</h3>' +
-                        '<div class="info-content">' +
-                        '<p>' +
-                        type +
-                        '<br/>' +
-                        petType +
-                        '</p>' +
-                        '</div>' +
+                    var contentString =
+                        '<div class="info-window text-center">' +
+                            '<div class="d-inline-flex p-2 col-md-10">' +
+                                '<h3>' +
+                                    '<a href="http://localhost:9288/business/businesses/Details/' + id + '">' +
+                                    name +
+                                    '</a>' +
+                                '</h3>' +
+                                '<img class="d-inline-flex p-2 img-responsive " style="max-width: 100%; height: auto;" src="' + picUrl + '"/>'+
+                                '<h3>' + city + '</h3>' +
+                                '<div class="info-content">' +
+                                    '<p>' +
+                                        type +
+                                        '<br/>' +
+                                        petType +
+                                    '</p>' +
+                                    '</div>' +
+                            '</div>' +
                         '</div>';
 
                     var infowindow = new google.maps.InfoWindow({
@@ -234,7 +242,7 @@ $(function () {
             //var markerCluster = new MarkerClusterer(map, marker,
             //    { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
 
-        }, //End of AJAX Success function  
+        } //End of AJAX Success function  
 
 
         //failure: function (data) {

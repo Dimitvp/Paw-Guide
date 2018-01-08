@@ -52,6 +52,11 @@
         [ValidateModelState]
         public async Task<IActionResult> Create(PublicationsFormModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
             model.Content = this.html.Sanitize(model.Content);
 
             var userId = this.userManager.GetUserId(User);
@@ -78,6 +83,11 @@
         [HttpPost]
         public async Task<IActionResult> Edit(int id, ArticleDetailsServiceModel articleModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(articleModel);
+            }
+
             var userId = this.userManager.GetUserId(User);
 
             var update = await this.publications.EditAsync(
@@ -91,6 +101,9 @@
             {
                 return NotFound();
             }
+
+            this.TempData.AddWarningMessage(string.Format(SuccessfullEdit, articleModel.Title));
+
 
             return RedirectToAction(nameof(Index));
         }

@@ -52,6 +52,11 @@
         [ValidateModelState]
         public async Task<IActionResult> Create(PublicationsFormModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
             model.Content = this.html.Sanitize(model.Content);
 
             var userId = this.userManager.GetUserId(User);
@@ -64,6 +69,9 @@
                 model.PicUrl,
                 isApproved,
                 userId);
+
+            this.TempData.AddSuccessMessage(string.Format(SuccessfullAdd, model.Title));
+
 
             return RedirectToAction(nameof(Index));
         }
@@ -85,6 +93,11 @@
         [HttpPost]
         public async Task<IActionResult> Edit(int id, AdDetailsServiceModel adModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(adModel);
+            }
+
             var userId = this.userManager.GetUserId(User);
 
             var update = await this.publications.EditAsync(
@@ -99,6 +112,7 @@
             {
                 return NotFound();
             }
+            this.TempData.AddWarningMessage(string.Format(SuccessfullEdit, adModel.Title));
 
             return RedirectToAction(nameof(Index));
         }

@@ -1,4 +1,5 @@
 ﻿@model BusinessListingViewModel
+
 @{
     ViewData["Title"] = "Pet Friendly";
 }
@@ -12,7 +13,7 @@
             _________________________________________________________ -->
 
             <div class="col-md-9" id="blog-listing-small">
-                
+
                 @await Html.PartialAsync("_TypeSelectFormPartial")
 
                 <div class="row">
@@ -28,7 +29,7 @@
                                         <div class="image">
                                             @if (business.IsApproved == false)
                                             {
-                                                <img src="https://barmakapproved.files.wordpress.com/2012/07/notapproved.png" alt="Not Approved" class="img-responsive" style="position: absolute"/>
+                                                <img src="https://barmakapproved.files.wordpress.com/2012/07/notapproved.png" alt="Not Approved" class="img-responsive" style="position: absolute" />
                                             }
 
                                             @if (business.Image != null)
@@ -72,9 +73,9 @@
                                             }
 
                                             Type of place: @Html.DisplayFor(model => businessType)
-                                            <br/>
+                                            <br />
                                             City: @business.City
-                                            <br/>
+                                            <br />
                                             Pets Alowed: @business.PetType
                                         </p>
                                         <p class="read-more">
@@ -97,6 +98,28 @@
             </div>
             <!-- /.col-md-9 -->
             <!-- *** LEFT COLUMN END *** -->
+            <!-- *** RIGHT COLUMN ***
+            _________________________________________________________ -->
+
+            <div class="col-md-3">
+                <div class="panel panel-default sidebar-menu">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Search</h3>
+                    </div>
+
+                    <div class="panel-body">
+                        <form asp-action="Search">
+                            <div class="input-group">
+                                <input asp-for="SearchText" class="form-control" placeholder="Search..." />
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-template-main" value="Search"><i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

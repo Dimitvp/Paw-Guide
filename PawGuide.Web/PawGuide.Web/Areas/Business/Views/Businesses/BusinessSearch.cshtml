@@ -1,0 +1,133 @@
+﻿@model BusinessSearchViewModel
+@{
+    ViewData["Title"] = $"Search Results For {Model.SearchText}";
+}
+<h2>@ViewData["Title"]</h2>
+
+@if (Model.Businesses.Any())
+{
+    @await Html.PartialAsync("_HeadingPartial")
+
+    <div id="content">
+        <div class="container">
+            <div class="row">
+                <!-- *** LEFT COLUMN ***
+                _________________________________________________________ -->
+
+                <div class="col-md-9" id="blog-listing-small">
+
+                    @await Html.PartialAsync("_TypeSelectFormPartial")
+
+                    <div class="row">
+
+                        @foreach (var business in Model.Businesses)
+                        {
+
+                            if (business.IsApproved == true || business.Author == User.Identity.Name)
+                            {
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="box-image-text blog">
+                                        <div class="top">
+                                            <div class="image">
+                                                @if (business.IsApproved == false)
+                                                {
+                                                    <img src="https://barmakapproved.files.wordpress.com/2012/07/notapproved.png" alt="Not Approved" class="img-responsive" style="position: absolute" />
+                                                }
+
+                                                @if (business.Image != null)
+                                                {
+                                                    <img src="~/img/Businesses/@business.Image" alt="" class="img-responsive">
+                                                }
+                                                else
+                                                {
+                                                    <img src="@business.PicUrl" alt="" class="img-responsive">
+                                                }
+
+                                            </div>
+                                            <div class="bg"></div>
+                                            <div class="text">
+                                                <p class="buttons">
+                                                    <a asp-action="Details" asp-route-id="@business.Id" asp-route-title="@business.Name.ToFriendlyUrl()" class="btn btn-template-transparent-primary">
+                                                        <i class="fa fa-link"></i>
+                                                        Read more
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="content">
+                                            <h4>
+                                                <a asp-action="Details" asp-route-id="@business.Id" asp-route-title="@business.Name.ToFriendlyUrl()">
+                                                    @business.Name
+                                                </a>
+                                            </h4>
+                                            <p class="author-category">
+                                                By
+                                                @business.Author
+                                                on
+                                                @business.PublishDate.ToShortDateString()
+                                            </p>
+                                            <p class="text-center">
+                                                @{
+                                                    var businessIndex = business.Type.GetHashCode();
+                                                    var businessType = Model.Type(businessIndex);
+                                                    var petIndex = business.PetType.GetHashCode();
+                                                    var petType = Model.PetType(petIndex);
+                                                }
+
+                                                Type of place: @Html.DisplayFor(model => businessType)
+                                                <br />
+                                                City: @business.City
+                                                <br />
+                                                Pets Alowed: @business.PetType
+                                            </p>
+                                            <p class="read-more">
+                                                <a asp-action="Details" asp-route-id="@business.Id" asp-route-title="@business.Name.ToFriendlyUrl()" class="btn btn-template-main">
+                                                    Continue reading
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-image-text -->
+
+                                </div>
+                            }
+                        }
+
+                    </div>
+
+                    @await Html.PartialAsync("_PagerPartial")
+
+                </div>
+                <!-- /.col-md-9 -->
+                <!-- *** LEFT COLUMN END *** -->
+                <!-- *** RIGHT COLUMN ***
+                _________________________________________________________ -->
+
+                <div class="col-md-3">
+                    <div class="panel panel-default sidebar-menu">
+
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Search</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            <form asp-action="Search">
+                                <div class="input-group">
+                                    <input asp-for="SearchText" class="form-control" placeholder="Search..." />
+                                    <span class="input-group-btn">
+                                        <button type="submit" class="btn btn-template-main" value="Search"><i class="fa fa-search"></i></button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <h3>No courses to show.</h3>
+}
+<br />

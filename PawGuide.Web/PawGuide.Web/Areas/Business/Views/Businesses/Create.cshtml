@@ -1,4 +1,4 @@
-﻿@model PublishBusinessFormModel
+﻿@model BusinessFormViewModel
 @{
     ViewData["Title"] = "Publish Business";
 }
@@ -55,15 +55,12 @@
                 <span asp-validation-for="LngLocation" class="text-danger"></span>
             </div>
             <div class="form-group">
-                @*<label asp-for="PetType"></label>
-                    <select asp-for="PetType" asp-items="Html.GetEnumSelectList<PetType>()" class="form-control"></select>
-                    <span asp-validation-for="PetType" class="text-danger"></span>*@
-                <label asp-for="PetTypes"></label>
+                <label asp-for="PetTypes"></label>:
+                <br/>
                 @foreach (var enumValue in Enum.GetValues(typeof(PetType)).Cast<PetType>())
                 {
-                    <input type="checkbox" name="@nameof(PetType)s" value="@((int)enumValue)" /> @: @enumValue.ToDisplayName()
+                    <input type="checkbox" name="@nameof(PetType)s" value="@((int)enumValue)" /> @: @enumValue.ToDisplayName()<br/>
                 }
-
                 <span asp-validation-for="PetTypes" class="text-danger"></span>
             </div>
             <div class="form-group">
