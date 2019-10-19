@@ -1,5 +1,6 @@
 ﻿namespace PawGuide.Services.Publications.Implementations
 {
+    using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using Data;
     using Data.Models;
@@ -15,10 +16,12 @@
     public class PublicationService : IPublicationService
     {
         private readonly PawGuideDbContext db;
+        private MapperConfiguration config;
 
-        public PublicationService(PawGuideDbContext db)
+        public PublicationService(PawGuideDbContext db, MapperConfiguration config)
         {
             this.db = db;
+            this.config = config;
         }
 
         public async Task<IEnumerable<ArticleListingServiceModel>> AllArticlesAsync(int page = 1)
@@ -27,7 +30,7 @@
                 .OrderByDescending(a => a.PublishDate)
                 .Skip((page - 1) * PublicationsPageSize)
                 .Take(PublicationsPageSize)
-                .ProjectTo<ArticleListingServiceModel>()
+                .ProjectTo<ArticleListingServiceModel>(config)
                 .ToListAsync();
 
         public async Task<IEnumerable<AdListingServiceModel>> AllAdsAsync(int page = 1)
@@ -36,7 +39,7 @@
                 .OrderByDescending(a => a.PublishDate)
                 .Skip((page - 1) * PublicationsPageSize)
                 .Take(PublicationsPageSize)
-                .ProjectTo<AdListingServiceModel>()
+                .ProjectTo<AdListingServiceModel>(config)
                 .ToListAsync();
 
         public async Task<int> TotalAsync()
@@ -46,14 +49,14 @@
             => await this.db
                 .Articles
                 .Where(a => a.Id == id)
-                .ProjectTo<ArticleDetailsServiceModel>()
+                .ProjectTo<ArticleDetailsServiceModel>(config)
                 .FirstOrDefaultAsync();
 
         public async Task<AdDetailsServiceModel> AdById(int id)
             => await this.db
                 .Ads
                 .Where(a => a.Id == id)
-                .ProjectTo<AdDetailsServiceModel>()
+                .ProjectTo<AdDetailsServiceModel>(config)
                 .FirstOrDefaultAsync();
 
         public async Task CreateAsync(string title, string content, string authorId)

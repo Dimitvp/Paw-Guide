@@ -14,7 +14,15 @@
         {
             if (!testInitialized)
             {
-                Mapper.Initialize(config => config.AddProfile<AutoMapperProfile>());
+                //Mapper.Initialize(config => config.AddProfile<AutoMapperProfile>());
+
+                //var config = new MapperConfiguration(cfg => {
+                //    cfg.CreateMap<Source, Dest>();
+                //});
+
+                //IMapper mapper = config.CreateMapper();
+                //var source = new Source();
+                //var dest = mapper.Map<Source, Dest>(source);
                 testInitialized = true;
             }
         }

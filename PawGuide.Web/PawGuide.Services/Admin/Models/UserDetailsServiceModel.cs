@@ -8,8 +8,6 @@
 
     public class UserDetailsServiceModel : AdminUserListingServiceModel, IHaveCustomMapping
     {
-        public string Name { get; set; }
-
         public string Phone { get; set; }
 
         public int BusinessesCount { get; set; }

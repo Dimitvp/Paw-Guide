@@ -25,7 +25,6 @@
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddDbContext<PawGuideDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -41,7 +40,7 @@
 
             // Add application services.
 
-            services.AddAutoMapper();
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddDomainServices();
 
@@ -49,6 +48,7 @@
 
             services.AddMvc(options =>
             {
+                options.EnableEndpointRouting = false;
                 options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
             });
 
@@ -69,8 +69,8 @@
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
-                app.UseDatabaseErrorPage();
+                //app.UseBrowserLink();
+                //app.UseDatabaseErrorPage();
             }
             else
             {

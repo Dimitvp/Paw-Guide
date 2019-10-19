@@ -12,16 +12,23 @@
     using Services.Businesses.Models;
 
     using static ServiceConstants;
+    using AutoMapper;
 
     public class BusinessService : IBusinessService
     {
         private readonly PawGuideDbContext db;
         private readonly UserManager<User> userManager;
+        private MapperConfiguration config;
+
+        public BusinessService(MapperConfiguration config)
+        {
+            this.config = config;
+        }
 
         public BusinessService(PawGuideDbContext db, UserManager<User> userManager)
         {
             this.db = db;
-            this.userManager = userManager;
+            this.userManager = userManager; 
         }
 
         public async Task<IEnumerable<BusinessListingServiceModel>> AllAsync(int page = 1)
@@ -30,7 +37,7 @@
                 .OrderByDescending(b => b.PublishDate)
                 .Skip((page - 1) * BusinessesPageSize)
                 .Take(BusinessesPageSize)
-                .ProjectTo<BusinessListingServiceModel>()
+                .ProjectTo<BusinessListingServiceModel>(config)
                 .ToListAsync();
 
         public async Task<IEnumerable<BusinessListingServiceModel>> BusinessTypeAsync(int type, int page = 1)
@@ -40,7 +47,7 @@
                 .OrderByDescending(b => b.PublishDate)
                 .Skip((page - 1) * BusinessesPageSize)
                 .Take(BusinessesPageSize)
-                .ProjectTo<BusinessListingServiceModel>()
+                .ProjectTo<BusinessListingServiceModel>(config)
                 .ToListAsync();
 
         public async Task<int> TotalAsync()
@@ -50,7 +57,7 @@
             => await this.db
                 .Businesses
                 .Where(b => b.IsApproved == true)
-                .ProjectTo<BusinessLocationsServicModel>()
+                .ProjectTo<BusinessLocationsServicModel>(config)
                 .ToListAsync();
 
         public async Task<IEnumerable<BusinessListingServiceModel>> FindAsync(string searchText)
@@ -61,7 +68,7 @@
                 .Businesses
                 .OrderByDescending(b => b.Id)
                 .Where(b => b.City.ToLower().Contains(searchText.ToLower()))
-                .ProjectTo<BusinessListingServiceModel>()
+                .ProjectTo<BusinessListingServiceModel>(config)
                 .ToListAsync();
         }
 
@@ -69,14 +76,14 @@
             => await this.db
                 .Businesses
                 .Where(a => a.Id == id)
-                .ProjectTo<BusinessDetailsServiceModel>()
+                .ProjectTo<BusinessDetailsServiceModel>(config)
                 .FirstOrDefaultAsync();
 
         public async Task<BusinessEditServiceModel> EditById(int id)
             => await this.db
                 .Businesses
                 .Where(a => a.Id == id)
-                .ProjectTo<BusinessEditServiceModel>()
+                .ProjectTo<BusinessEditServiceModel>(config)
                 .FirstOrDefaultAsync();
 
         public async Task SetImage(int id, string image)
