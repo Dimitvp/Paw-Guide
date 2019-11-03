@@ -16,7 +16,8 @@
             {
                 //Mapper.Initialize(config => config.AddProfile<AutoMapperProfile>());
 
-                //var config = new MapperConfiguration(cfg => {
+                //var config = new MapperConfiguration(cfg =>
+                //{
                 //    cfg.CreateMap<Source, Dest>();
                 //});
 
